@@ -1,12 +1,12 @@
 import { PortableTextBlock, Slug } from "sanity";
 import { Button } from "@/types/Button";
-import { FillColor } from "@/types/FillColor";
+import { BlockStyle } from "@/types/BlockStyle";
 
 export type AnnounceBlock = {
-  _type: "AnnounceBlock";
+  _type: "announceBlock";
   _key: string;
   id?: Slug;
-  fill: FillColor;
+  style: BlockStyle;
   eyebrow?: string;
   title: PortableTextBlock[];
   text?: string;

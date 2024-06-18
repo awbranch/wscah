@@ -1,11 +1,11 @@
 import { Slug } from "sanity";
 import { CallToAction } from "@/types/CallToAction";
-import { FillColor } from "@/types/FillColor";
+import { BlockStyle } from "@/types/BlockStyle";
 
 export type CallToActionBlock = {
   _type: "callToActionBlock";
   _key: string;
   id?: Slug;
-  fill: FillColor;
+  style: BlockStyle;
   callToAction: CallToAction;
 };

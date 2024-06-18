@@ -1,9 +1,9 @@
-import { Image } from '@/types/Image';
+import { Image } from "@/types/Image";
 import { Team } from "@/types/Team";
 
 export type TeamMember = {
   _type: "teamMember";
-  _key: string;
+  _id: string;
   image: Image;
   name: string;
   title: string;

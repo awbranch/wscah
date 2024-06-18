@@ -1,12 +1,12 @@
 import { PortableTextBlock, Slug } from "sanity";
-import { FillColor } from "@/types/FillColor";
+import { BlockStyle } from "@/types/BlockStyle";
 import { DataCardSet } from "@/types/DataCardSet";
 
 export type DataCardBlock = {
   _type: "dataCardBlock";
   _key: string;
   id?: Slug;
-  fill: FillColor;
+  style: BlockStyle;
   title?: PortableTextBlock[];
   cards: DataCardSet;
 };

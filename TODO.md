@@ -78,3 +78,25 @@ Base Components
 
 
 
+MenuButton
+  Name
+  OnClick
+    Menu
+  Or
+    Link
+
+MenuButton
+  Name
+  style = "default" | "rounded"
+  action = "link" | "menu"
+  [if link]
+    href
+  [if menu]
+    menu items
+
+
+  
+
+  
+  
+  

@@ -1,10 +1,10 @@
 import { PortableTextBlock, Slug } from "sanity";
-import { FillColor } from "@/types/FillColor";
+import { BlockStyle } from "@/types/BlockStyle";
 
 export type GenericBlock = {
   _type: "genericBlock";
   _key: string;
   id?: Slug;
-  fill: FillColor;
+  style: BlockStyle;
   content: PortableTextBlock[];
 };
