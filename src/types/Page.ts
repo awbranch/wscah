@@ -1,10 +1,8 @@
-import { Block } from '@/types/Block';
-import { Image } from '@/types/Image';
+import { Block } from "@/types/Block";
 
 export type Page = {
   path: string;
   title: string;
   description: string;
   blocks?: Block[];
-  socialImage?: Image;
 };
