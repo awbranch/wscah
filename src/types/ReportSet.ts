@@ -1,8 +1,10 @@
+import { ComponentProps } from "@/types/Component";
 import { Report } from "@/types/Report";
 
-export type ReportSet = {
+export type ReportSetLayout = "grid" | "list";
+
+export type ReportSet = ComponentProps & {
   _type: "reportSet";
-  _key: string;
-  layout: "grid" | "list";
+  layout: ReportSetLayout;
   reports: Report[];
 };

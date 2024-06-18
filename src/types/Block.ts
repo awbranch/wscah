@@ -1,12 +1,14 @@
-import { AnnounceBlock } from "@/types//AnnounceBlock";
-import { CallToActionBlock } from "@/types//CallToActionBlock";
-import { DataCardBlock } from "@/types//DataCardBlock";
-import { HeroBlock } from "@/types//HeroBlock";
-import { ImageCardBlock } from "@/types//ImageCardBlock";
+import { Slug } from 'sanity';
+import { Palette } from '@/types/Palette';
+import { Wallpaper } from '@/types/Wallpaper';
+import { Component } from '@/types/Component';
 
-export type Block =
-  | AnnounceBlock
-  | CallToActionBlock
-  | DataCardBlock
-  | HeroBlock
-  | ImageCardBlock;
+export type Block = {
+  _type: "block";
+  _key: string;
+  id: Slug;
+  hidden: boolean;
+  palette: Palette;
+  wallpaper?: Wallpaper;
+  components?: Component[];
+};

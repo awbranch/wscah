@@ -1,4 +1,9 @@
-import { SocialMediaService } from "@/types/SocialMediaService";
+export type SocialMediaService =
+  | "facebook"
+  | "instagram"
+  | "youtube"
+  | "x"
+  | "linkedin";
 
 export type Social = {
   service: SocialMediaService;

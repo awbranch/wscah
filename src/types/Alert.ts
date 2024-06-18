@@ -1,8 +1,9 @@
-import { AlertStyle } from "@/types/AlertStyle";
+import { ComponentProps } from "@/types/Component";
 
-export type Alert = {
+export type AlertStyle = 'orange' | 'blue' | 'dark-blue';
+
+export type Alert = ComponentProps &  {
   _type: "alert";
-  _key: string;
   style: AlertStyle;
   text: string;
   label: string;

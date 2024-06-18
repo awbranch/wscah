@@ -1,5 +1,6 @@
-export type IFrame = {
+import { ComponentProps } from "@/types/Component";
+
+export type IFrame = ComponentProps & {
   _type: "iframe";
-  _key: string;
   code: string;
 };

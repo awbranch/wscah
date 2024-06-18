@@ -8,5 +8,5 @@ export type TeamMember = {
   name: string;
   title: string;
   bio: string;
-  teams: Team[]; // Thge teams the member is part of
+  teams: Team[]; // The teams the member is part of
 };

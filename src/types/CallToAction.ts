@@ -1,15 +1,16 @@
-import { PortableTextBlock, Slug } from "sanity";
+import { ComponentProps } from "@/types/Component";
+import { PortableTextBlock } from "sanity";
 import { Button } from "@/types/Button";
 import { Image } from "@/types/Image";
-import { Orientation } from "@/types/Orientation";
 
-export type CallToAction = {
+export type Orientation = 'left' | 'right';
+
+export type CallToAction = ComponentProps & {
   _type: "callToAction";
-  _key: string;
+  orientation: Orientation;
+  image: Image;
   eyebrow?: string;
-  title: PortableTextBlock[];
+  title?: PortableTextBlock[];
   text?: string;
   button?: Button;
-  image: Image;
-  orientation: Orientation;
 };

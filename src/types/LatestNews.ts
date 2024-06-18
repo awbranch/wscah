@@ -1,9 +1,9 @@
+import { ComponentProps } from "@/types/Component";
 import { NewsCategory } from "@/types/NewsCategory";
 
 // Displays the latest count news in the specified categories.
-export type LatestNews = {
+export type LatestNews = ComponentProps & {
   _type: "latestNews";
-  _key: string;
   count: number;
   categories: NewsCategory[];
 };

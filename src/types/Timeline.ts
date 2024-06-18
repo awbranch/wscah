@@ -1,3 +1,4 @@
+import { ComponentProps } from "@/types/Component";
 import { Image } from "@/types/Image";
 
 export type TimelineItem = {
@@ -6,4 +7,9 @@ export type TimelineItem = {
   year: string;
   text?: string;
   image: Image;
+};
+
+export type Timeline = ComponentProps & {
+  _type: "timeline";
+  items: TimelineItem[];
 };
