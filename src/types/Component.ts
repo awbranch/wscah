@@ -42,9 +42,9 @@ export type ComponentProps = {
   blockId?: string;
   blockPalette: Palette;
 
-  // Optional vertical spacing around component
-  spacing?: "xs" | "sm" | "md" | "lg";
+  // // Optional vertical spacing around component
+  // spacing?: "sm" | "md" | "lg";
 
-  // Optional max widht of component. If not set it will inherit from the page
-  maxWidth?: MaxWidth;
+  // // Optional max width of component. If not set it will inherit from the page
+  // maxWidth?: MaxWidth;
 };

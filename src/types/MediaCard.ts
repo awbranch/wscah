@@ -1,20 +1,14 @@
-import { PortableTextBlock } from "sanity";
-import { Alignment } from "@/types/Alignment";
-import { Palette } from "@/types/Palette";
-import { Image } from "@/types/Image";
-import { DataSet } from "@/types/DataSet";
-import { Button } from "@/types/Button";
+import { ImageCard } from "@/types/ImageCard";
+import { IconCard } from "@/types/IconCard";
+import { DataCard } from "@/types/DataCard";
+import { TitleCard } from "@/types/TitleCard";
 
-export type MediaCard = {
-  _type: "mediaCard";
+export type MediaCard = 
+| ImageCard
+| IconCard
+| DataCard
+| TitleCard;
+
+export type MediaCardProps = {
   _key: string;
-  palette: Palette;
-  alignment: Alignment;
-  image?: Image;
-  imageLayout?: "fill" | "center";
-  title?: PortableTextBlock[];
-  text?: string;
-  dataSet?: DataSet;
-  button?: Button;
-  cardHref?: string;
-};
+}

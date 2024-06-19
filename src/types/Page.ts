@@ -7,6 +7,6 @@ export type Page = {
   path: string;
   title: string;
   description: string;
-  maxWidth: MaxWidth;
+  maxWidth?: MaxWidth;
   blocks?: Block[];
 };
