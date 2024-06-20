@@ -7,7 +7,7 @@ import { MaxWidth } from "@/types/MaxWidth";
 export type Block = {
   _type: "pageBlock";
   _key: string;
-  id: Slug;
+  id: string;
   hidden: boolean;
   palette: Palette;
   wallpaper?: Wallpaper;

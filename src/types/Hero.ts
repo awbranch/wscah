@@ -5,7 +5,10 @@ import { Image } from "@/types/Image";
 
 export type Hero = ComponentProps & {
   _type: "hero";
-  text: PortableTextBlock[];
+  title: PortableTextBlock[];
+  subtitle?: string;
+  text?: PortableTextBlock[];
+  display: "fan" | "single-image";
   images: Image[];
   button?: Button;
 };
