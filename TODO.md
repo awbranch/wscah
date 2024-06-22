@@ -76,6 +76,38 @@ MediaCard
   Button - various styles
   Link - The entire card can have a link vs just the button
   
+MediaCards
+  - IconCard
+    - Palette
+    - Icon - select from list
+    - Title: string
+    - Text?: string
+    - Button
+  - ImageCard
+    - Palette
+    - Image 
+    - Title?: string
+    - Text? : string
+    - Button?
+    - Card URL
+  - TitleCard
+    - No Background
+    - Eyebrow
+    - Title - Rich Text
+    - Text: string
+  - DataCard
+    - Palette
+    - Title: string
+    - Text?: string
+    - units: DataUnit;
+    - data: DataPoint[];
+    get rid of dataset
+
+
+
+
+
+
 
 Text
   // The text color is dictated by the block it sits in
@@ -103,3 +135,7 @@ Text
 
     
   
+
+Hero
+- Heading
+- Normal
