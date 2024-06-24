@@ -1,5 +1,4 @@
 import { Palette } from "@/types/Palette";
-import { MaxWidth } from "@/types/MaxWidth";
 import { Alert } from "@/types/Alert";
 import { Announcement } from "@/types/Announcement";
 import { CallToAction } from "@/types/CallToAction";

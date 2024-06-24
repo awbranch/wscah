@@ -1,5 +1,5 @@
 import { Block } from "@/types/Block";
-import { MaxWidth } from "@/types/MaxWidth";
+export type PageWidth = "xs" | "sm" | "md" | "lg";
 
 export type Page = {
   _type: "page";
@@ -7,6 +7,6 @@ export type Page = {
   path: string;
   title: string;
   description: string;
-  maxWidth?: MaxWidth;
+  maxWidth?: PageWidth;
   blocks?: Block[];
 };
