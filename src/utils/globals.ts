@@ -10,31 +10,52 @@ export const pageWidths: { [V in PageWidth]: number } = {
   lg: maxPageWidth,
 };
 
+export const themeColors = {
+  black: "#111111",
+  white: "#ffffff",
+  paper: "#ADADAD",
+  grape: {
+    700: "#1E357C", // darkest
+    600: "#32498D", // dark
+    500: "#475D9F", // acc
+    400: "#5D77B7", // blue
+    DEFAULT: "#5D77B7",
+    300: "#9FACD3", // tint
+  },
+  carrot: {
+    700: "#CF4804", // dark
+    600: "#E56E32", // middle
+    DEFAULT: "#E56E32",
+    500: "#F58034", // wscah
+  },
+  kale: {
+    700: "#6E932C", // dark
+    DEFAULT: "#89AD47", // green
+    600: "#89AD47",
+  },
+};
+
 type PaletteClass = {
   [P in Palette]: {
-    [C in "block" | "accent" | "divide"]: string;
+    [C in "block" | "divide"]: string;
   };
 };
 
 export const userPaletteClasses: PaletteClass = {
   white: {
     block: "bg-white text-black",
-    accent: "text-black",
     divide: "divide-black",
   },
   gray: {
-    block: "bg-gray-200 text-black",
-    accent: "text-white",
+    block: "bg-gray-100 text-black",
     divide: "divide-white",
   },
   blue: {
-    block: "bg-blue-600 text-white",
-    accent: "text-sunset",
-    divide: "divide-white",
+    block: "bg-grape-500 text-white",
+    divide: "divide-grape-300",
   },
   "dark-blue": {
-    block: "bg-blue-800 text-white",
-    accent: "text-white",
-    divide: "divide-white",
+    block: "bg-grape-700 text-white",
+    divide: "divide-grape-300",
   },
 };
