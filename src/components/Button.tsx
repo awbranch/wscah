@@ -13,12 +13,6 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: ButtonIcon;
 };
 
-type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  href: string;
-  variant?: ButtonVariant;
-  icon?: ButtonIcon;
-};
-
 const classes =
   "inline-flex items-center justify-center rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 py-4 text-base font-black";
 
@@ -45,19 +39,16 @@ export function Button({
       className={twMerge(classes, variantClasses[variant], className)}
       {...props}
     >
-      {icon === "left" && (
-        <ChevronLeftIcon className="h-6 w-6" aria-hidden="true" />
-      )}
-      {children}
-      {icon === "right" && (
-        <ChevronRightIcon className="h-6 w-6" aria-hidden="true" />
-      )}
-      {icon === "down" && (
-        <ChevronDownIcon className="h-6 w-6" aria-hidden="true" />
-      )}
+      <ButtonContents icon={icon}>{children}</ButtonContents>
     </button>
   );
 }
+
+type LinkButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string;
+  variant?: ButtonVariant;
+  icon?: ButtonIcon;
+};
 
 export function LinkButton({
   href,
@@ -66,23 +57,36 @@ export function LinkButton({
   className,
   children,
   ...props
-}: LinkProps) {
+}: LinkButtonProps) {
   return (
     <Link
       href={href}
       className={twMerge(classes, variantClasses[variant], className)}
       {...props}
     >
+      <ButtonContents icon={icon}>{children}</ButtonContents>
+    </Link>
+  );
+}
+
+type ButtonContentsProps = {
+  icon?: ButtonIcon;
+  children: React.ReactNode;
+};
+
+function ButtonContents({ icon, children }: ButtonContentsProps) {
+  return (
+    <>
       {icon === "left" && (
-        <ChevronLeftIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
+        <ChevronLeftIcon className="h-6 w-6 flex-none" aria-hidden="true" />
       )}
       {children}
       {icon === "right" && (
-        <ChevronRightIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
+        <ChevronRightIcon className="h-6 w-6 flex-none" aria-hidden="true" />
       )}
       {icon === "down" && (
-        <ChevronDownIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
+        <ChevronDownIcon className="h-6 w-6 flex-none" aria-hidden="true" />
       )}
-    </Link>
+    </>
   );
 }

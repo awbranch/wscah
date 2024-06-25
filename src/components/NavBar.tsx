@@ -21,8 +21,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Image } from "@/types/Image";
 import { Menu } from "@/types/Menu";
 import { twJoin } from "tailwind-merge";
-
-import { userPaletteButtonProps } from "@/utils/globals";
+import { NavButton, NavLink } from "@/components/NavButton";
 import SvgImage from "@/components/SvgImage";
 
 type Props = {
@@ -34,6 +33,7 @@ type Props = {
 
 export default function NavBar({ logo, menus }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const palette = "dark-blue";
   return (
     <>
       <Container className={"bg-grape-500 py-3 text-white"}>
@@ -47,22 +47,11 @@ export default function NavBar({ logo, menus }: Props) {
               {menus.map((m) => (
                 <span key={m._key}>
                   {m.action === "link" ? (
-                    <Link
-                      className="block rounded-full px-6 py-3 text-base font-medium text-white hover:bg-grape-700"
-                      href={m.href}
-                    >
-                      {m.name}
-                    </Link>
+                    <NavLink palette={palette} href={m.href} name={m.name} />
                   ) : (
                     <Popover className="relative">
                       <PopoverBackdrop className="fixed inset-0" />
-                      <PopoverButton className="ui-open:bg-grape-700 flex items-center rounded-full px-6 py-3 text-base font-medium text-white hover:bg-grape-700 hover:ring-0">
-                        {m.name}
-                        <ChevronDownIcon
-                          className="ml-1 h-5 w-5 flex-none text-white"
-                          aria-hidden="true"
-                        />
-                      </PopoverButton>
+                      <NavButton palette={palette} name={m.name} />
 
                       <Transition
                         as={Fragment}
