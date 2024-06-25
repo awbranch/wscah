@@ -35,11 +35,11 @@ export default function NavBar({ logo, menus }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
-      <Container className={"py-4 bg-grape-500 text-white"}>
+      <Container className={"py-3 bg-grape-500 text-white"}>
         <nav className="flex items-center justify-between" aria-label="Global">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">St. Peter&apos;s Kitchen</span>
-            <SvgImage className="h-12 w-auto inline-block" image={logo} />
+            <SvgImage className="h-[78px] w-auto inline-block" image={logo} />
           </Link>
           <div className="flex items-center gap-x-6">
             <PopoverGroup className="hidden lg:flex gap-x-6">

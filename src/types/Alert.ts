@@ -3,7 +3,6 @@ import { ComponentProps } from "@/types/Component";
 
 export type Alert = ComponentProps &  {
   _type: "alert";
-  palette: Palette;
   text: string;
   label: string;
   link?: string;
