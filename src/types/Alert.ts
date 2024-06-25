@@ -1,10 +1,9 @@
+import { Palette } from "@/types/Palette";
 import { ComponentProps } from "@/types/Component";
-
-export type AlertStyle = 'orange' | 'blue' | 'dark-blue';
 
 export type Alert = ComponentProps &  {
   _type: "alert";
-  style: AlertStyle;
+  palette: Palette;
   text: string;
   label: string;
   link?: string;

@@ -1,5 +1,5 @@
 export type ButtonIcon = "down" | "right" | "left";
-export type ButtonStyle =
+export type ButtonVariant =
   | "orange-solid"
   | "white-solid"
   | "white-text"
@@ -8,7 +8,7 @@ export type ButtonStyle =
 export type Button = {
   _type: "button";
   _key: string;
-  style: ButtonStyle;
+  variant: ButtonVariant;
   icon?: ButtonIcon;
   label: string;
   href: string;

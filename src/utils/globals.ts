@@ -1,5 +1,6 @@
 import { PageWidth } from "@/types/Page";
 import { Palette } from "@/types/Palette";
+import { ButtonVariant } from "@/types/Button";
 
 export const maxPageWidth = 1280;
 
@@ -39,6 +40,25 @@ type PaletteClass = {
   [P in Palette]: {
     [C in "block" | "divide"]: string;
   };
+};
+
+export const userPaletteButtonProps: {
+  [P in Palette]: {
+    variant: ButtonVariant;
+  };
+} = {
+  white: {
+    variant: "orange-solid",
+  },
+  gray: {
+    variant: "orange-solid",
+  },
+  blue: {
+    variant: "white-solid",
+  },
+  "dark-blue": {
+    variant: "white-solid",
+  },
 };
 
 export const userPaletteClasses: PaletteClass = {

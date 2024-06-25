@@ -1,10 +1,10 @@
 import { MenuItem } from "@/types/MenuItem";
 
-export type MenuButton = {
-  _type: "menuButton";
+export type Menu = {
+  _type: "menu";
   _key: string;
   name: "string";
-  style: "text" | "rounded";
+  variant: "text" | "button";
 } & (
   | {
       action: "link";

@@ -1,4 +1,3 @@
-import { Slug } from "sanity";
 import { Palette } from "@/types/Palette";
 import { Wallpaper } from "@/types/Wallpaper";
 import { Component } from "@/types/Component";
