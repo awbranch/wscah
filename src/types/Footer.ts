@@ -1,12 +1,11 @@
-import { Address } from '@/types/Address';
-import { Social } from '@/types/Social';
-import { Link } from '@/types/Link';
-import { Image } from '@/types/Image';
+import { Address } from "@/types/Address";
+import { Social } from "@/types/Social";
+import { Link } from "@/types/Link";
+import { Image } from "@/types/Image";
 
 export type Footer = {
-  _type: 'footer';
+  _type: "footer";
   _key: string;
-  logo: Image;
   organization: string;
   addresses: Address[];
   phone?: string;

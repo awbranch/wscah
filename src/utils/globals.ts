@@ -56,9 +56,6 @@ export const userPaletteButtonProps: {
   blue: {
     variant: "white-solid",
   },
-  "dark-blue": {
-    variant: "white-solid",
-  },
 };
 
 export const userPaletteClasses: PaletteClass = {
@@ -72,10 +69,6 @@ export const userPaletteClasses: PaletteClass = {
   },
   blue: {
     block: "bg-grape-500 text-white",
-    divide: "divide-grape-300",
-  },
-  "dark-blue": {
-    block: "bg-grape-700 text-white",
     divide: "divide-grape-300",
   },
 };

@@ -15,10 +15,9 @@ const variantClasses: { [V in Variant]: string } = {
 };
 
 const paletteClasses: { [P in Palette]: string } = {
-  white: "text-white ui-open:bg-grape-700 hover:bg-grape-700",
-  gray: "text-white ui-open:bg-grape-700 hover:bg-grape-700",
+  white: "text-black ui-open:bg-grape-700 hover:bg-grape-700",
+  gray: "text-black ui-open:bg-grape-700 hover:bg-grape-700",
   blue: "text-white ui-open:bg-grape-700 hover:bg-grape-700",
-  "dark-blue": "text-white ui-open:bg-grape-700 hover:bg-grape-700",
 };
 
 type NavButtonProps = {

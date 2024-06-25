@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/Container";
 import {
@@ -12,35 +13,45 @@ import {
   Popover,
   PopoverPanel,
   PopoverGroup,
-  PopoverButton,
   PopoverBackdrop,
   Transition,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Image } from "@/types/Image";
 import { Menu } from "@/types/Menu";
 import { twJoin } from "tailwind-merge";
+import { clsx } from "clsx";
 import { NavButton, NavLink } from "@/components/NavButton";
-import SvgImage from "@/components/SvgImage";
+import { Palette } from "@/types/Palette";
+import { userPaletteClasses } from "@/utils/globals";
 
 type Props = {
-  logo: Image;
   menus: Menu[];
+  pagePalette: Record<string, Palette>;
 };
 
 // TODO: Use https://popper.js.org/react-popper/v2/hook/ to ensure menu stays in view
 
-export default function NavBar({ logo, menus }: Props) {
+export default function NavBar({ menus, pagePalette }: Props) {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const palette = "dark-blue";
+  const palette = pagePalette[pathname] || "white";
+
   return (
     <>
-      <Container className={"bg-grape-500 py-3 text-white"}>
+      <Container className={clsx("py-3", userPaletteClasses[palette].block)}>
         <nav className="flex items-center justify-between" aria-label="Global">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">WSCAH</span>
-            <SvgImage className="inline-block h-[78px] w-auto" image={logo} />
+            <img
+              alt={"WSCAH"}
+              className="inline-block h-[78px] w-auto"
+              src={
+                palette === "blue"
+                  ? "/logo-full-light.svg"
+                  : "/logo-full-dark.svg"
+              }
+            />
           </Link>
           <div className="flex items-center">
             <PopoverGroup className="hidden lg:flex">
@@ -116,7 +127,11 @@ export default function NavBar({ logo, menus }: Props) {
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">St. Peter&amp;s Kitchen</span>
-              <SvgImage className="h-10 w-auto" image={logo} />
+              <img
+                alt={"WSCAH"}
+                className="inline-block h-10 w-auto"
+                src={"/logo-light.svg"}
+              />
             </Link>
             <button
               type="button"
