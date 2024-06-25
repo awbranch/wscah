@@ -3,7 +3,7 @@ import {
   ChevronRightIcon,
   ChevronLeftIcon,
   ChevronDownIcon,
-} from "@heroicons/react/20/solid";
+} from "@heroicons/react/16/solid";
 import { twMerge } from "tailwind-merge";
 import { ButtonIcon, ButtonVariant } from "@/types/Button";
 import Link from "next/link";
@@ -20,15 +20,17 @@ type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const classes =
-  "inline-flex items-center justify-center rounded-md shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 gap-x-2 px-3.5 py-2 text-base";
+  "inline-flex items-center justify-center rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 py-4 text-base font-black";
 
 const variantClasses: { [S in ButtonVariant]: string } = {
   "orange-solid":
-    "bg-carrot-600 text-white hover:bg-carrot-700 focus-visible:outline-orange-700",
+    "px-6 bg-carrot-600 text-white hover:bg-carrot-700 focus-visible:outline-carrot-600",
   "white-solid":
-    "bg-white text-grape-500 hover:bg-grape-700 focus-visible:outline-white",
-  "white-text": "text-white",
-  "blue-text": "text-grape-500",
+    "px-6 bg-white text-grape-500 hover:bg-grape-700 hover:text-white focus-visible:outline-white",
+  "white-text":
+    "px-2 text-white hover:text-carrot-500  focus-visible:outline-white",
+  "blue-text":
+    "px-2 text-grape-500 hover:text-grape-700 focus-visible:outline-grape-500",
 };
 
 export function Button({
@@ -44,14 +46,14 @@ export function Button({
       {...props}
     >
       {icon === "left" && (
-        <ChevronLeftIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
+        <ChevronLeftIcon className="h-6 w-6" aria-hidden="true" />
       )}
       {children}
       {icon === "right" && (
-        <ChevronRightIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
+        <ChevronRightIcon className="h-6 w-6" aria-hidden="true" />
       )}
       {icon === "down" && (
-        <ChevronDownIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
+        <ChevronDownIcon className="h-6 w-6" aria-hidden="true" />
       )}
     </button>
   );
@@ -68,11 +70,7 @@ export function LinkButton({
   return (
     <Link
       href={href}
-      className={twMerge(
-        classes,
-        variantClasses[variant],
-        className
-      )}
+      className={twMerge(classes, variantClasses[variant], className)}
       {...props}
     >
       {icon === "left" && (
