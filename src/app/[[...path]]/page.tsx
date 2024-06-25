@@ -47,8 +47,6 @@ export default async function GenericPage({ params }: Props) {
   const path = params && params.path ? params.path : [];
   const page = await getPageByPath(path);
 
-  console.log(page);
-
   return (
     <>
       {/* {path.length > 1 && (

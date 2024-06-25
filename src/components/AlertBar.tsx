@@ -18,7 +18,7 @@ export default function AlertBar({ message }: Props) {
     <div
       className={twJoin(
         barVisible ? "flex" : "hidden",
-        "items-center gap-x-6 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 bg-grape-700 text-white"
+        "items-center gap-x-6 bg-grape-700 px-6 py-2.5 text-white sm:px-3.5 sm:before:flex-1",
       )}
     >
       <div className="text-sm leading-6">

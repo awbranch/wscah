@@ -21,7 +21,6 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Image } from "@/types/Image";
 import { Menu } from "@/types/Menu";
 import { twJoin } from "tailwind-merge";
-import { LinkButton } from "@/components/Button";
 
 import { userPaletteButtonProps } from "@/utils/globals";
 import SvgImage from "@/components/SvgImage";
@@ -31,23 +30,25 @@ type Props = {
   menus: Menu[];
 };
 
+// TODO: Use https://popper.js.org/react-popper/v2/hook/ to ensure menu stays in view
+
 export default function NavBar({ logo, menus }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
-      <Container className={"py-3 bg-grape-500 text-white"}>
+      <Container className={"bg-grape-500 py-3 text-white"}>
         <nav className="flex items-center justify-between" aria-label="Global">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">St. Peter&apos;s Kitchen</span>
-            <SvgImage className="h-[78px] w-auto inline-block" image={logo} />
+            <span className="sr-only">WSCAH</span>
+            <SvgImage className="inline-block h-[78px] w-auto" image={logo} />
           </Link>
-          <div className="flex items-center gap-x-6">
-            <PopoverGroup className="hidden lg:flex gap-x-6">
+          <div className="flex items-center">
+            <PopoverGroup className="hidden lg:flex">
               {menus.map((m) => (
                 <span key={m._key}>
                   {m.action === "link" ? (
                     <Link
-                      className="text-base font-medium text-white"
+                      className="block rounded-full px-6 py-3 text-base font-medium text-white hover:bg-grape-700"
                       href={m.href}
                     >
                       {m.name}
@@ -55,7 +56,7 @@ export default function NavBar({ logo, menus }: Props) {
                   ) : (
                     <Popover className="relative">
                       <PopoverBackdrop className="fixed inset-0" />
-                      <PopoverButton className="flex items-center gap-x-1 text-base font-medium text-white">
+                      <PopoverButton className="ui-open:bg-grape-700 flex items-center rounded-full px-6 py-3 text-base font-medium text-white hover:bg-grape-700 hover:ring-0">
                         {m.name}
                         <ChevronDownIcon
                           className="ml-1 h-5 w-5 flex-none text-white"
@@ -72,11 +73,11 @@ export default function NavBar({ logo, menus }: Props) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <PopoverPanel className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-grape-700 p-2 shadow-lg ring-1 ring-gray-900/5">
+                        <PopoverPanel className="absolute left-0 top-full z-10 mt-3 rounded-[30px] bg-grape-700 p-6 shadow-lg ring-1 ring-gray-900/5">
                           {m.items.map((itm) =>
                             itm.header ? (
                               <div
-                                className="select-none px-3 pt-8 pb-2 text-sm text-grape-300 font-medium"
+                                className="select-none px-4 pb-1.5 pt-8 text-xs font-bold text-grape-300"
                                 key={itm._key}
                               >
                                 {itm.name}
@@ -85,11 +86,11 @@ export default function NavBar({ logo, menus }: Props) {
                               <a
                                 key={itm._key}
                                 href={itm.href}
-                                className="block rounded-lg px-3 py-2 text-sm font-medium leading-8 text-white hover:bg-grape-500"
+                                className="block whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium text-white hover:bg-grape-500"
                               >
                                 {itm.name}
                               </a>
-                            )
+                            ),
                           )}
                         </PopoverPanel>
                       </Transition>
@@ -160,7 +161,7 @@ export default function NavBar({ logo, menus }: Props) {
                               <ChevronDownIcon
                                 className={twJoin(
                                   open ? "rotate-180" : "",
-                                  "h-6 w-6 flex-none"
+                                  "h-6 w-6 flex-none",
                                 )}
                                 aria-hidden="true"
                               />
@@ -180,14 +181,14 @@ export default function NavBar({ logo, menus }: Props) {
                                   >
                                     {itm.name}
                                   </Link>
-                                )
+                                ),
                               )}
                             </DisclosurePanel>
                           </>
                         )}
                       </Disclosure>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             </div>
