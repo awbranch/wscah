@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import { PortableTextBlock } from 'sanity';
-import { PortableText } from '@portabletext/react';
+import React from "react";
+import Link from "next/link";
+import { PortableTextBlock } from "sanity";
+import { PortableText } from "@portabletext/react";
 
 type Props = {
   message: PortableTextBlock[];
@@ -24,7 +24,7 @@ export default function AlertRichText({ message }: Props) {
     },
     block: {
       normal: ({ children }: { children: React.ReactNode }) => (
-        <p className="text-sm">{children}</p>
+        <p className="text-center text-sm xl:text-base">{children}</p>
       ),
     },
   };

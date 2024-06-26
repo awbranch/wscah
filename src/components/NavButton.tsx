@@ -5,7 +5,8 @@ import { twMerge } from "tailwind-merge";
 import { PopoverButton } from "@headlessui/react";
 import type { Palette } from "@/types/Palette";
 
-const classes = "rounded-full px-6 py-3 text-base font-medium";
+const classes =
+  "rounded-full px-[15px] py-2  xl:px-6 xl:py-3 text-sm xl:text-base font-medium";
 
 type Variant = "text" | "button";
 
@@ -15,8 +16,9 @@ const variantClasses: { [V in Variant]: string } = {
 };
 
 const paletteClasses: { [P in Palette]: string } = {
-  white: "text-black ui-open:bg-grape-700 hover:bg-grape-700",
-  gray: "text-black ui-open:bg-grape-700 hover:bg-grape-700",
+  white:
+    "text-black ui-open:bg-grape-700 ui-open:text-white hover:text-white hover:bg-grape-700",
+  gray: "text-black ui-open:bg-grape-700 ui-open:text-white hover:text-white hover:bg-grape-700",
   blue: "text-white ui-open:bg-grape-700 hover:bg-grape-700",
 };
 
@@ -48,9 +50,10 @@ type NavLinkProps = {
 
 export function NavLink({ name, palette, href }: NavLinkProps) {
   return (
-    <Link className={twMerge(classes, 
-      variantClasses.text,
-      paletteClasses[palette])} href={href}>
+    <Link
+      className={twMerge(classes, variantClasses.text, paletteClasses[palette])}
+      href={href}
+    >
       {name}
     </Link>
   );
