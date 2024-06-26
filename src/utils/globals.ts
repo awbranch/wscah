@@ -11,6 +11,11 @@ export const pageWidths: { [V in PageWidth]: number } = {
   lg: maxPageWidth,
 };
 
+export const socialMediaImageDimensions = {
+  width: 1200,
+  height: 630,
+};
+
 export const themeColors = {
   black: "#111111",
   white: "#ffffff",

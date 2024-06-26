@@ -90,11 +90,6 @@ MediaCards
     - Text? : string
     - Button?
     - Card URL
-  - TitleCard
-    - No Background
-    - Eyebrow
-    - Title - Rich Text
-    - Text: string
   - DataCard
     - Palette
     - Title: string
@@ -120,7 +115,6 @@ Text
 | Heading 1       | XL Font                            | h1     |
 | Heading 2       | L Font                             | h2     |
 | Heading 3       | M Font                             | h3     |
-| Eyebrow         | ???                                | h4     |
 | Large           | Body Large                         | p      |
 | Normal          | Body Regular                       | p      |
   href

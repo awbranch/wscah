@@ -7,8 +7,9 @@ import {
 } from "@/utils/sanity";
 import React from "react";
 import Section from "@/components/Section";
+import ComponentList from "@/components/ComponentList";
 import type { Metadata } from "next";
-
+import { socialMediaImageDimensions } from "@/utils/globals";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -37,6 +38,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       meta.alternates = {
         canonical: page.path,
       };
+
+      if (settings.socialImage) {
+        const { width, height } = socialMediaImageDimensions;
+        const title = settings.title + (page.title ? " - " + page.title : "");
+        meta.openGraph = {
+          title: title,
+          type: "website",
+          url: page.path,
+          images: urlFor(settings.socialImage)
+            .fit("fill")
+            .width(width)
+            .height(height)
+            .url(),
+        };
+      }
     }
   }
 
@@ -63,8 +79,7 @@ export default async function GenericPage({ params }: Props) {
             palette={b.palette}
             maxWidth={page.maxWidth}
           >
-            {b.components &&
-              b.components.map((c) => <h1 key={c._key}>{c._type}</h1>)}
+            {b?.components && <ComponentList components={b.components} />}
           </Section>
         ))}
     </>
