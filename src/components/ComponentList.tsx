@@ -2,6 +2,7 @@ import React from "react";
 import { Component as ComponentType } from "@/types/Component";
 import Announcement from "@/components/Announcement";
 import Article from "@/components/Article";
+import ButtonRow from "@/components/ButtonRow";
 import CallToAction from "@/components/CallToAction";
 import Hero from "@/components/Hero";
 import IFrame from "@/components/IFrame";
@@ -37,6 +38,9 @@ function Component({ component }: ComponentProps) {
 
     case "callToAction":
       return <CallToAction {...component} />;
+
+    case "buttonRow":
+      return <ButtonRow {...component} />;
 
     case "hero":
       return <Hero {...component} />;
