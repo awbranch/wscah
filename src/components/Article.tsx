@@ -1,5 +1,6 @@
 import React from "react";
 import { Article as Props } from "@/types/Article";
+import { PortableText } from "@portabletext/react";
 
 export default function Article({
   blockId,
@@ -7,5 +8,9 @@ export default function Article({
   text,
   columns,
 }: Props) {
-  return <div>ARTICLE GOES HERE</div>;
+  return (
+    <div className={"margins-y-0"}>
+      <PortableText value={text} />
+    </div>
+  );
 }

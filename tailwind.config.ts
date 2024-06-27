@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { themeColors } from "./src/utils/globals";
+import { breakpoints, themeColors } from "./src/utils/globals";
 
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
@@ -22,6 +22,13 @@ const config: Config = {
       "6xl": "50px",
       "7xl": "70px",
     },
+    screens: Object.entries(breakpoints).reduce(
+      (a, [k, v]) => {
+        a[k] = `${v}px`;
+        return a;
+      },
+      {} as { [key: string]: string }
+    ),
     extend: {
       colors: themeColors,
       fontFamily: {
