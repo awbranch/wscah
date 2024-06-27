@@ -26,9 +26,9 @@ export default function Section({
     <section
       id={id}
       className={twMerge(
-        "py-20 md:py-24",
+        "py-16 md:py-20",
         userPaletteClasses[palette]?.block,
-        className
+        className,
       )}
     >
       <Container maxWidth={maxWidth}>{children}</Container>

@@ -112,9 +112,9 @@ Text
 
 | sanity          | styling                            | html   |
 | ----------------| ---------------------------------- | ------ |
-| Heading 1       | XL Font                            | h1     |
-| Heading 2       | L Font                             | h2     |
-| Heading 3       | M Font                             | h3     |
+| Heading 1       | 5XL Font                           | h1     |
+| Heading 2       | 3XL Font                           | h2     |
+| Heading 3       | 2XL Font                           | h3     |
 | Large           | Body Large                         | p      |
 | Normal          | Body Regular                       | p      |
   href
@@ -128,8 +128,23 @@ Text
 | Numbered List   | Block element list                 | ol     |  
 
     
-  
+Spacings
 
-Hero
-- Heading
-- Normal
+| Tailwind    | Spec |
+| -------- ---| ---- |
+| 1           | 4px  | 
+| 1.5         | 6px  |
+| 3           | 12px |
+| 4           | 16px |
+| 6           | 24px |
+| 8           | 32px |
+| 10          | 40px |
+| 16 is 64px  | 72px |
+| 20          | 80px |
+
+
+Text
+  // The text color is dictated by the block it sits in
+ //  href
+
+    -----

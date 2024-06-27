@@ -10,19 +10,28 @@ const config: Config = {
       black: "900",
     },
     fontSize: {
-      xs: "12px",
-      sm: "15px",
-      base: "16px",
-      lg: "18px",
-      xl: "20px",
-      "2xl": "24px",
-      "3xl": "35px",
-      "4xl": "40px",
-      "5xl": "45px",
-      "6xl": "50px",
-      "7xl": "70px",
+      "xs": "12px", // Body Tiny - Weight: Medium or Bold
+      "sm": "15px", // Body Small - Weight: Medium or Bold
+      "base": "16px", // Body Regular - Weight: Medium or Bold
+      "lg": "18px", // Body Large - Weight: Medium or Bold
+
+      "xl": "20px", // Header XXS - Black, Uppercase
+      "2xl": "24px", // Header XS - Bold
+      "3xl": "35px", // Header S - H2 - Bold
+      "4xl": "40px", // Header M - H2 - Bold
+      "5xl": "45px", // Header L - H1 - Black
+      "6xl": "50px", // Header XL - Hero - Black
+      "7xl": "70px", // Header XXL - Black
+
+      "mxl": "12px", // Mobile Header XXS - Black, Uppercase
+      "2mxl": "15px", // Mobile Header XS - Bold
+      "3mxl": "22px", // Mobile Header S - H2 - Bold
+      "4mxl": "25px", // Mobile Header M - H2 - Bold
+      "5mxl": "30px", // Mobile Header L - H1 - Black
+      "6mxl": "32px", // Mobile Header XL - Hero - Black
+      "7mxl": "40px", // Mobile Header XXL - Black
     },
-    screens: Object.entries(breakpoints).reduce(
+  screens: Object.entries(breakpoints).reduce(
       (a, [k, v]) => {
         a[k] = `${v}px`;
         return a;
