@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import IFrame from "@/components/IFrame";
 import LatestNews from "@/components/LatestNews";
 import MediaCardSet from "@/components/MediaCardSet";
+import Title from "@/components/Title";
 
 type ComponentListProps = {
   components: ComponentType[];
@@ -28,7 +29,6 @@ type ComponentProps = {
 
 function Component({ component }: ComponentProps) {
   switch (component._type) {
-
     case "announcement":
       return <Announcement {...component} />;
 
@@ -49,6 +49,9 @@ function Component({ component }: ComponentProps) {
 
     case "mediaCardSet":
       return <MediaCardSet {...component} />;
+
+    case "title":
+      return <Title {...component} />;
 
     default:
       return (

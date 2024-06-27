@@ -5,9 +5,6 @@ export default function MediaCardSet({
   blockId,
   blockPalette,
   palette,
-  eyebrow,
-  title,
-  text,
   cards,
 }: Props) {
   return <div>MEDIA CARD SET GOES HERE</div>;
