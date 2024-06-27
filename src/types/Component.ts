@@ -12,7 +12,7 @@ import { NewsTabs } from "@/types/NewsTabs";
 import { ProposedText } from "@/types/ProposedText";
 import { ReportSet } from "@/types/ReportSet";
 import { TeamTabs } from "@/types/TeamTabs";
-import { Text } from "@/types/Text";
+import { Article } from "@/types/Text";
 import { Timeline } from "@/types/Timeline";
 import { Video } from "@/types/Video";
 
@@ -30,7 +30,7 @@ export type Component =
   | ProposedText
   | ReportSet
   | TeamTabs
-  | Text
+  | Article
   | Timeline
   | Video;
 

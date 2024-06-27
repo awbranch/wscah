@@ -1,11 +1,12 @@
 import React from "react";
 import { Component as ComponentType } from "@/types/Component";
 import Announcement from "@/components/Announcement";
-import Hero from "@/components/Hero";
-import MediaCardSet from "@/components/MediaCardSet";
+import Article from "@/components/Article";
 import CallToAction from "@/components/CallToAction";
-import LatestNews from "@/components/LatestNews";
+import Hero from "@/components/Hero";
 import IFrame from "@/components/IFrame";
+import LatestNews from "@/components/LatestNews";
+import MediaCardSet from "@/components/MediaCardSet";
 
 type ComponentListProps = {
   components: ComponentType[];
@@ -27,23 +28,27 @@ type ComponentProps = {
 
 function Component({ component }: ComponentProps) {
   switch (component._type) {
-    case "hero":
-      return <Hero {...component} />;
-
-    case "mediaCardSet":
-      return <MediaCardSet {...component} />;
 
     case "announcement":
       return <Announcement {...component} />;
 
+    case "article":
+      return <Article {...component} />;
+
     case "callToAction":
       return <CallToAction {...component} />;
+
+    case "hero":
+      return <Hero {...component} />;
+
+    case "iframe":
+      return <IFrame {...component} />;
 
     case "latestNews":
       return <LatestNews {...component} />;
 
-    case "iframe":
-      return <IFrame {...component} />;
+    case "mediaCardSet":
+      return <MediaCardSet {...component} />;
 
     default:
       return (
