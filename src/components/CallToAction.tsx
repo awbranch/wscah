@@ -44,8 +44,8 @@ export default function CallToAction({
           )}
         >
           {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
-          {title && <TitleText blockPalette={blockPalette} title={title} />}
-          {text && <SimpleText text={text} />}
+          {title && <TitleText className="[text-wrap:balance]" blockPalette={blockPalette} title={title} />}
+          {text && <SimpleText className="[text-wrap:balance]" text={text} />}
           {button && button[0] && (
             <LinkButton
               variant={button[0].variant}

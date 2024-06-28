@@ -85,3 +85,9 @@ export const userPaletteClasses: PaletteClass = {
     divide: "divide-grape-300",
   },
 };
+
+export const userHeaderClasses: Record<Palette, string> = {
+  white: "text-grape-500",
+  gray: "text-grape-500",
+  blue: "text-white",
+};

@@ -31,8 +31,8 @@ export default function Title({
       {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
       {title && (
         <TitleText
+          className="[text-wrap:balance]"
           blockPalette={blockPalette}
-          className={"[text-wrap:balance]"}
           title={title}
         />
       )}

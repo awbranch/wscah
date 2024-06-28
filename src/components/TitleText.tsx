@@ -2,7 +2,8 @@ import React from "react";
 import { PortableTextBlock } from "sanity";
 import { PortableText } from "@portabletext/react";
 import { Palette } from "@/types/Palette";
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
+import { userHeaderClasses } from "@/utils/globals";
 
 type TitleTextProps = {
   title: PortableTextBlock[];
@@ -22,12 +23,9 @@ export default function TitleText({
         block: {
           normal: ({ children }) => (
             <h1
-              className={clsx(
+              className={twMerge(
                 "text-4mxl font-bold leading-tight md:text-4xl",
-                {
-                  "text-white": blockPalette === "blue",
-                  "text-grape-500": blockPalette !== "blue",
-                },
+                userHeaderClasses[blockPalette || "white"],
                 className,
               )}
             >
