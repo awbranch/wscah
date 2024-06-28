@@ -21,7 +21,6 @@ export default function Section({
   className,
   children,
 }: Props) {
-  console.log(`Section: ${palette} - ${userPaletteClasses[palette]?.block}`);
   return (
     <section
       id={id}

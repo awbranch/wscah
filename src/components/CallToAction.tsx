@@ -17,7 +17,6 @@ export default function CallToAction({
   text,
   button,
 }: Props) {
-  console.log("button:", button);
 
   return (
     <div className="relative">
