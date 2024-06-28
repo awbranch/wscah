@@ -10,12 +10,12 @@ const config: Config = {
       black: "900",
     },
     fontSize: {
-      "xs": "12px", // Body Tiny - Weight: Medium or Bold
-      "sm": "15px", // Body Small - Weight: Medium or Bold
-      "base": "16px", // Body Regular - Weight: Medium or Bold
-      "lg": "18px", // Body Large - Weight: Medium or Bold
+      xs: "12px", // Body Tiny - Weight: Medium or Bold
+      sm: "15px", // Body Small - Weight: Medium or Bold
+      base: "16px", // Body Regular - Weight: Medium or Bold
+      lg: "18px", // Body Large - Weight: Medium or Bold
 
-      "xl": "20px", // Header XXS - Black, Uppercase
+      xl: "20px", // Header XXS - Black, Uppercase
       "2xl": "24px", // Header XS - Bold
       "3xl": "35px", // Header S - H2 - Bold
       "4xl": "40px", // Header M - H2 - Bold
@@ -23,7 +23,7 @@ const config: Config = {
       "6xl": "50px", // Header XL - Hero - Black
       "7xl": "70px", // Header XXL - Black
 
-      "mxl": "12px", // Mobile Header XXS - Black, Uppercase
+      mxl: "12px", // Mobile Header XXS - Black, Uppercase
       "2mxl": "15px", // Mobile Header XS - Bold
       "3mxl": "22px", // Mobile Header S - H2 - Bold
       "4mxl": "25px", // Mobile Header M - H2 - Bold
@@ -31,7 +31,17 @@ const config: Config = {
       "6mxl": "32px", // Mobile Header XL - Hero - Black
       "7mxl": "40px", // Mobile Header XXL - Black
     },
-  screens: Object.entries(breakpoints).reduce(
+    borderRadius: {
+      none: "0",
+      DEFAULT: "6px",
+      md: "6px",
+      lg: "8px",
+      xl: "10px",
+      "2xl": "20px",
+      "3xl": "30px",
+      full: "9999px",
+    },
+    screens: Object.entries(breakpoints).reduce(
       (a, [k, v]) => {
         a[k] = `${v}px`;
         return a;

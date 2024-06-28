@@ -3,7 +3,7 @@ import { PortableTextBlock } from "sanity";
 import { Button } from "@/types/Button";
 import { Image } from "@/types/Image";
 
-export type Orientation = 'left' | 'right';
+export type Orientation = "left" | "right";
 
 export type CallToAction = ComponentProps & {
   _type: "callToAction";
@@ -12,5 +12,5 @@ export type CallToAction = ComponentProps & {
   eyebrow?: string;
   title?: PortableTextBlock[];
   text?: string;
-  button?: Button;
+  button?: Button[];
 };

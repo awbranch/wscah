@@ -1,14 +1,20 @@
 import React from "react";
 import { PortableTextBlock } from "sanity";
-import { PortableText, PortableTextReactComponents } from "@portabletext/react";
+import { PortableText } from "@portabletext/react";
+import { Palette } from "@/types/Palette";
 import clsx from "clsx";
 
 type TitleTextProps = {
   title: PortableTextBlock[];
+  blockPalette?: Palette;
   className?: string;
 };
 
-export default function TitleText({ title, className }: TitleTextProps) {
+export default function TitleText({
+  title,
+  blockPalette,
+  className,
+}: TitleTextProps) {
   return (
     <PortableText
       value={title}
@@ -18,6 +24,10 @@ export default function TitleText({ title, className }: TitleTextProps) {
             <h1
               className={clsx(
                 "text-4mxl font-bold leading-tight md:text-4xl",
+                {
+                  "text-white": blockPalette === "blue",
+                  "text-grape-500": blockPalette !== "blue",
+                },
                 className,
               )}
             >

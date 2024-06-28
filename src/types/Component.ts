@@ -16,7 +16,6 @@ import { TeamTabs } from "@/types/TeamTabs";
 import { Timeline } from "@/types/Timeline";
 import { Title } from "@/types/Title";
 import { Video } from "@/types/Video";
-
 import { Palette } from "@/types/Palette";
 
 export type Component =

@@ -1,7 +1,9 @@
 import React from "react";
 import { Title as Props } from "@/types/Title";
+import Eyebrow from "@/components/Eyebrow";
 import TitleText from "@/components/TitleText";
 import clsx from "clsx";
+import SimpleText from "./SimpleText";
 
 export default function Title({
   blockPalette,
@@ -22,28 +24,19 @@ export default function Title({
           "max-w-3xl": maxWidth === "sm",
           "max-w-4xl": maxWidth === "md",
           "max-w-5xl": maxWidth === "lg",
-          "text-white": blockPalette === "blue",
-          "text-grape-500": blockPalette !== "blue",
         },
-        "mx-auto",
+        "mx-auto space-y-4",
       )}
     >
-      {eyebrow && (
-        <div
-          className={clsx(
-            "text-mxl mb-4 font-black uppercase md:text-xl",
-
-            {
-              "text-grape-400": blockPalette !== "blue",
-              "text-white": blockPalette === "blue",
-            },
-          )}
-        >
-          {eyebrow}
-        </div>
+      {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
+      {title && (
+        <TitleText
+          blockPalette={blockPalette}
+          className={"[text-wrap:balance]"}
+          title={title}
+        />
       )}
-      {title && <TitleText className={"[text-wrap:balance]"} title={title} />}
-      {text && <p className="mt-4 text-base [text-wrap:balance]">{text}</p>}
+      {text && <SimpleText className="[text-wrap:balance]" text={text} />}
     </div>
   );
 }
