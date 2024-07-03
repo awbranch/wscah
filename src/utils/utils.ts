@@ -1,3 +1,5 @@
+import { PortableTextBlock, PortableTextChild } from "sanity";
+
 export function splitText(text: string) {
   return text
     .split(/\n+/)
@@ -20,10 +22,10 @@ export async function sleep(ms: number): Promise<void> {
 export function errorToString(error: any): string {
   if (error instanceof Error) {
     return error.message;
-  } else if (typeof error === 'string') {
+  } else if (typeof error === "string") {
     return error;
   } else {
-    return 'Unknown error';
+    return "Unknown error";
   }
 }
 
@@ -31,13 +33,33 @@ export function trim(
   strings: TemplateStringsArray,
   ...values: string[]
 ): string {
-  let result = '';
+  let result = "";
   strings.forEach((str, i) => {
-    result += str + (values[i] || '');
+    result += str + (values[i] || "");
   });
 
   return result
-    .split('\n')
+    .split("\n")
     .map((s) => s.trim())
-    .join('\n');
+    .join("\n");
+}
+
+
+export function blocksToText(blocks: PortableTextBlock[]) {
+  return (
+    blocks
+      // loop through each block
+      .map((block) => {
+        // if it's not a text block with children,
+        // return nothing
+        if (block._type !== "block" || !block.children) {
+          return "";
+        }
+        // loop through the children spans, and join the
+        // text strings
+        return (block.children as PortableTextChild[]).map((child) => child.text).join("");
+      })
+      // join the paragraphs leaving split by two linebreaks
+      .join("\n\n")
+  );
 }

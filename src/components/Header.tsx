@@ -14,7 +14,11 @@ export default async function Header() {
 
   return (
     <header>
-      <NavBar menus={props.menus} pagePalette={pagePalette} alertMessage={props.showAlert ? props.alertMessage : undefined} />
+      <NavBar
+        menus={props.menus}
+        pagePalette={pagePalette}
+        alert={props.showAlert ? {message: props.alertMessage, palette: props.alertPalette} : undefined}
+      />
     </header>
   );
 }

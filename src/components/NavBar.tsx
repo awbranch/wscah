@@ -30,23 +30,27 @@ import { Palette } from "@/types/Palette";
 import { userPaletteClasses } from "@/utils/globals";
 import { PortableTextBlock } from "sanity";
 import AlertBar from "@/components/AlertBar";
+import { AlertPalette } from "@/types/Header";
 
 type Props = {
   menus: Menu[];
   pagePalette: Record<string, Palette>;
-  alertMessage?: PortableTextBlock[];
+  alert?: {
+    message: PortableTextBlock[];
+    palette: AlertPalette;
+  };
 };
 
 // TODO: Use https://popper.js.org/react-popper/v2/hook/ to ensure menu stays in view
 
-export default function NavBar({ alertMessage, menus, pagePalette }: Props) {
+export default function NavBar({ menus, pagePalette, alert }: Props) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const palette = pagePalette[pathname] || "white";
 
   return (
     <>
-      {alertMessage && <AlertBar message={alertMessage} />}
+      {alert && <AlertBar message={alert.message} palette={alert.palette} />}
 
       <Container className={clsx("py-3", userPaletteClasses[palette].block)}>
         <nav className="flex items-center justify-between" aria-label="Global">
@@ -138,7 +142,9 @@ export default function NavBar({ alertMessage, menus, pagePalette }: Props) {
         onClose={setMobileMenuOpen}
       >
         <DialogPanel className="fixed inset-0 z-10 w-full overflow-y-auto bg-grape-600">
-          {alertMessage && <AlertBar message={alertMessage} />}
+          {alert && (
+            <AlertBar message={alert.message} palette={alert.palette} />
+          )}
           <div className="p-6">
             <div className="flex justify-end">
               <button
