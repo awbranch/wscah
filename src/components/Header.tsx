@@ -1,6 +1,5 @@
 import React from "react";
 import { getHeader, getPages } from "@/utils/sanity";
-import AlertBar from "@/components/AlertBar";
 import NavBar from "@/components/NavBar";
 import { Palette } from "@/types/Palette";
 
@@ -15,8 +14,7 @@ export default async function Header() {
 
   return (
     <header>
-      {props.showAlert && <AlertBar message={props.alertMessage} />}
-      <NavBar menus={props.menus} pagePalette={pagePalette} />
+      <NavBar menus={props.menus} pagePalette={pagePalette} alertMessage={props.showAlert ? props.alertMessage : undefined} />
     </header>
   );
 }

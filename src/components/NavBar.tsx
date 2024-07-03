@@ -28,21 +28,26 @@ import { Menu } from "@/types/Menu";
 import { clsx } from "clsx";
 import { Palette } from "@/types/Palette";
 import { userPaletteClasses } from "@/utils/globals";
+import { PortableTextBlock } from "sanity";
+import AlertBar from "@/components/AlertBar";
 
 type Props = {
   menus: Menu[];
   pagePalette: Record<string, Palette>;
+  alertMessage?: PortableTextBlock[];
 };
 
 // TODO: Use https://popper.js.org/react-popper/v2/hook/ to ensure menu stays in view
 
-export default function NavBar({ menus, pagePalette }: Props) {
+export default function NavBar({ alertMessage, menus, pagePalette }: Props) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const palette = pagePalette[pathname] || "white";
 
   return (
     <>
+      {alertMessage && <AlertBar message={alertMessage} />}
+
       <Container className={clsx("py-3", userPaletteClasses[palette].block)}>
         <nav className="flex items-center justify-between" aria-label="Global">
           <Link href="/">
@@ -132,62 +137,65 @@ export default function NavBar({ menus, pagePalette }: Props) {
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
       >
-        <DialogPanel className="fixed inset-0 z-10 w-full overflow-y-auto bg-grape-600 p-6">
-          <div className="flex justify-end">
-            <button
-              type="button"
-              className="rounded-sm inline-flex items-center justify-center bg-grape-700 p-[10px] text-white hover:bg-white hover:text-grape-600"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon className={"h-6 w-6"} aria-hidden="true" />
-            </button>
-          </div>
-          <div className="mt-3 flex flex-col items-center space-y-6">
-            {menus.map((m) =>
-              m.action === "link" ? (
-                <MobileMenuButton
-                  key={m._key}
-                  name={m.name}
-                  menu={false}
-                  href={m.href}
-                  variant={m.variant}
-                  onClick={() => setMobileMenuOpen(false)}
-                />
-              ) : (
-                <div key={m._key}>
-                  <Disclosure as="div">
-                    {({ open }) => (
-                      <div className="flex flex-col items-center">
-                        <MobileMenuButton
-                          name={m.name}
-                          open={open}
-                          menu={true}
-                          variant={m.variant}
-                        />
-                        <DisclosurePanel className="mb-8 mt-8">
-                          {m.items.map((itm) =>
-                            itm.header ? (
-                              <MobileMenuHeader
-                                key={itm._key}
-                                name={itm.name}
-                              />
-                            ) : (
-                              <MobileMenuItem
-                                key={itm._key}
-                                name={itm.name}
-                                href={itm.href}
-                                onClick={() => setMobileMenuOpen(false)}
-                              />
-                            ),
-                          )}
-                        </DisclosurePanel>
-                      </div>
-                    )}
-                  </Disclosure>
-                </div>
-              ),
-            )}
+        <DialogPanel className="fixed inset-0 z-10 w-full overflow-y-auto bg-grape-600">
+          {alertMessage && <AlertBar message={alertMessage} />}
+          <div className="p-6">
+            <div className="flex justify-end">
+              <button
+                type="button"
+                className="rounded-sm inline-flex items-center justify-center bg-grape-700 p-[10px] text-white hover:bg-white hover:text-grape-600"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="sr-only">Close menu</span>
+                <XMarkIcon className={"h-6 w-6"} aria-hidden="true" />
+              </button>
+            </div>
+            <div className="mt-3 flex flex-col items-center space-y-6">
+              {menus.map((m) =>
+                m.action === "link" ? (
+                  <MobileMenuButton
+                    key={m._key}
+                    name={m.name}
+                    menu={false}
+                    href={m.href}
+                    variant={m.variant}
+                    onClick={() => setMobileMenuOpen(false)}
+                  />
+                ) : (
+                  <div key={m._key}>
+                    <Disclosure as="div">
+                      {({ open }) => (
+                        <div className="flex flex-col items-center">
+                          <MobileMenuButton
+                            name={m.name}
+                            open={open}
+                            menu={true}
+                            variant={m.variant}
+                          />
+                          <DisclosurePanel className="mb-8 mt-8">
+                            {m.items.map((itm) =>
+                              itm.header ? (
+                                <MobileMenuHeader
+                                  key={itm._key}
+                                  name={itm.name}
+                                />
+                              ) : (
+                                <MobileMenuItem
+                                  key={itm._key}
+                                  name={itm.name}
+                                  href={itm.href}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                />
+                              ),
+                            )}
+                          </DisclosurePanel>
+                        </div>
+                      )}
+                    </Disclosure>
+                  </div>
+                ),
+              )}
+            </div>
           </div>
         </DialogPanel>
       </Dialog>
