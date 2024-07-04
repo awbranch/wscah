@@ -22,7 +22,7 @@ export default function AlertBar({ message, palette }: Props) {
     const modified = lastMessage !== curentMessage;
 
     setBarVisible(modified);
-  }, []);
+  }, [message]);
 
   const onAlertClosed = () => {
     setBarVisible(false);
