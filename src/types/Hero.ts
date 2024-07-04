@@ -1,7 +1,7 @@
 import { ComponentProps } from "@/types/Component";
 import { PortableTextBlock } from "sanity";
 import { Button } from "@/types/Button";
-import { Image } from "@/types/Image";
+import { ImageRef } from "@/types/ImageRef";
 
 export type Hero = ComponentProps & {
   _type: "hero";
@@ -9,6 +9,6 @@ export type Hero = ComponentProps & {
   subtitle?: string;
   text?: PortableTextBlock[];
   display: "fan" | "single-image";
-  images: Image[];
-  button?: Button;
+  images: ImageRef[];
+  button: Button[];
 };

@@ -1,7 +1,7 @@
-import React, { ImgHTMLAttributes } from 'react';
-import { imageAttributes, urlFor } from '@/utils/sanity';
-import { Image } from '@/types/Image';
-import { twMerge } from 'tailwind-merge';
+import React, { ImgHTMLAttributes } from "react";
+import { imageAttributes, urlFor } from "@/utils/sanity";
+import { Image } from "@/types/Image";
+import { twMerge } from "tailwind-merge";
 
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
   image: Image;
@@ -31,7 +31,7 @@ export default function ResponsiveImage({
   const sources = responsiveWidths
     .filter((w) => w < width)
     .map((w) => ({
-      url: urlFor(image).width(w).auto('format').url(),
+      url: urlFor(image).width(w).auto("format").url(),
       width: w,
     }));
 
@@ -46,16 +46,16 @@ export default function ResponsiveImage({
 
   // Set the src to the best image. This is the fallback if srcSet fails to find an image
   const src = sources[sources.length - 1].url;
-  const srcSet = sources.map((s) => `${s.url} ${s.width}w`).join(', ');
+  const srcSet = sources.map((s) => `${s.url} ${s.width}w`).join(", ");
 
   return (
     <img
-      alt={image.alt || ''}
-      fetchPriority={priority ? 'high' : undefined}
+      alt={image.alt || ""}
+      fetchPriority={priority ? "high" : undefined}
       width={width}
       height={height}
-      decoding={'async'}
-      className={twMerge('object-cover w-full', className)}
+      decoding={"async"}
+      className={twMerge("w-full object-cover", className)}
       sizes={sizes}
       srcSet={srcSet}
       src={src}

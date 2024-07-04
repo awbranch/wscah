@@ -24,13 +24,13 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const settings = await getSettings();
   const path = params && params.path ? params.path : [];
-  
+
   const page = await getPageByPath(path);
 
   let meta: Metadata = {};
   if (page) {
     if (page.title) {
-      meta.title = page.title + " - " + settings.title;
+      meta.title = page.title + " | " + settings.title;
     }
     if (page.description) {
       meta.description = page.description;
