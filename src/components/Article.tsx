@@ -5,8 +5,22 @@ import ResponsiveImage from "@/components/ResponsiveImage";
 import { CaptionedImage } from "@/types/CaptionedImage";
 import ButtonRow from "@/components/ButtonRow";
 import { ButtonRow as ButtonRowType } from "@/types/ButtonRow";
-import { twMerge } from "tailwind-merge";
-  import { userHeaderClasses } from "@/utils/globals";
+import { userHeaderClasses } from "@/utils/globals";
+import {
+  BlockQuote,
+  Em,
+  H1,
+  H2,
+  H3,
+  Link,
+  OL,
+  Para,
+  Large,
+  Small,
+  XSmall,
+  Strong,
+  UL,
+} from "@/components/Typography";
 
 export default function Article({ blockPalette, text, columns }: Props) {
   const palette = blockPalette || "white";
@@ -15,66 +29,32 @@ export default function Article({ blockPalette, text, columns }: Props) {
       <PortableText
         value={text}
         components={{
+          marks: {
+            link: ({ children, value }) => (
+              <Link href={value.href}>{children}</Link>
+            ),
+            em: ({ children }) => <Em>{children}</Em>,
+            strong: ({ children }) => <Strong>{children}</Strong>,
+          },
           block: {
             h1: ({ children }) => (
-              <h1
-                className={twMerge(
-                  "text-5mxl mb-4 mt-10 font-black leading-tight md:text-5xl",
-                  userHeaderClasses[palette],
-                )}
-              >
-                {children}
-              </h1>
+              <H1 className={userHeaderClasses[palette]}>{children}</H1>
             ),
             h2: ({ children }) => (
-              <h2
-                className={twMerge(
-                  "text-3mxl leading-tightmd:text-3xl mb-4 mt-8 font-bold",
-                  userHeaderClasses[palette],
-                )}
-              >
-                {children}
-              </h2>
+              <H2 className={userHeaderClasses[palette]}>{children}</H2>
             ),
             h3: ({ children }) => (
-              <h3
-                className={twMerge(
-                  "text-2mxl mb-4 mt-8 font-bold leading-tight md:text-2xl",
-                  userHeaderClasses[palette],
-                )}
-              >
-                {children}
-              </h3>
+              <H3 className={userHeaderClasses[palette]}>{children}</H3>
             ),
-            normal: ({ children }) => (
-              <p className="mb-6 text-base leading-relaxed">{children}</p>
-            ),
-            large: ({ children }) => (
-              <p className="mb-6 text-lg leading-relaxed">{children}</p>
-            ),
-            small: ({ children }) => (
-              <p className="mb-6 text-sm leading-relaxed">{children}</p>
-            ),
-            xsmall: ({ children }) => (
-              <p className="mb-6 text-xs leading-relaxed">{children}</p>
-            ),
-            blockquote: ({ children }) => (
-              <blockquote className="my-10 border-l-4 border-l-grape-500 pl-4">
-                {children}
-              </blockquote>
-            ),
+            normal: ({ children }) => <Para>{children}</Para>,
+            large: ({ children }) => <Large>{children}</Large>,
+            small: ({ children }) => <Small>{children}</Small>,
+            xsmall: ({ children }) => <XSmall>{children}</XSmall>,
+            blockquote: ({ children }) => <BlockQuote>{children}</BlockQuote>,
           },
           list: {
-            bullet: ({ children }) => (
-              <ul className="mb-10 ml-6 mt-2 list-disc space-y-2">
-                {children}
-              </ul>
-            ),
-            number: ({ children }) => (
-              <ol className="mb-10 ml-6 mt-2 list-decimal space-y-2">
-                {children}
-              </ol>
-            ),
+            bullet: ({ children }) => <UL>{children}</UL>,
+            number: ({ children }) => <OL>{children}</OL>,
           },
           types: {
             image: ({ value }: { value: CaptionedImage }) => {

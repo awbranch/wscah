@@ -5,6 +5,8 @@ import TitleText from "@/components/TitleText";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { breakpoints } from "@/utils/globals";
 import clsx from "clsx";
+import { PortableText } from "@portabletext/react";
+import { Link, Small } from "@/components/Typography";
 
 export default function Hero({
   blockId,
@@ -39,7 +41,21 @@ export default function Hero({
             {button[0].label}
           </LinkButton>
         )}
-        {text && <div>Additional text goes here</div>}
+        {text && (
+          <PortableText
+            value={text}
+            components={{
+              marks: {
+                link: ({ children, value }) => (
+                  <Link href={value.href}>{children}</Link>
+                ),
+              },
+              block: {
+                normal: ({ children }) => <Small>{children}</Small>,
+              },
+            }}
+          />
+        )}
       </div>
       <div className="mt-10 flex justify-center lg:mt-0">
         <div className={"relative aspect-square h-auto w-full max-w-[580px]"}>
