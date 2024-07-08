@@ -30,13 +30,9 @@ export default function Title({
     >
       {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
       {title && (
-        <TitleText
-          className="[text-wrap:balance]"
-          blockPalette={blockPalette}
-          title={title}
-        />
+        <TitleText className="" blockPalette={blockPalette} title={title} />
       )}
-      {text && <SimpleText className="[text-wrap:balance]" text={text} />}
+      {text && <SimpleText className="" text={text} />}
     </div>
   );
 }

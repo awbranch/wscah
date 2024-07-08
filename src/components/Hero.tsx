@@ -19,7 +19,7 @@ export default function Hero({
   return (
     <div
       className={
-        "mx-auto mb-[300px] grid grid-flow-row items-center lg:auto-cols-fr lg:grid-flow-col"
+        "mb-[300px] grid grid-flow-row items-center lg:auto-cols-fr lg:grid-flow-col"
       }
     >
       <div className={"flex flex-col items-center gap-6 px-[20px]"}>
@@ -41,8 +41,8 @@ export default function Hero({
         )}
         {text && <div>Additional text goes here</div>}
       </div>
-      <div className="flex justify-center">
-        <div className={"relative h-[590px] w-[590px]"}>
+      <div className="mt-10 flex justify-center lg:mt-0">
+        <div className={"relative aspect-square h-auto w-full max-w-[580px]"}>
           {images.map((image, idx) => (
             <ResponsiveImage
               key={idx}
@@ -50,12 +50,12 @@ export default function Hero({
               priority={false}
               sizes={`(max-width: ${breakpoints.lg}px) 32rem, 50vw`}
               className={clsx(
-                "absolute top-[25px] aspect-[5/8] w-[335px] rounded-2xl",
+                "absolute top-[15px] aspect-[5/8] w-[60%] rounded-2xl",
                 {
-                  "left-[45px] rotate-[-10deg]": idx === 0,
-                  "left-[105px] rotate-[-5deg]": idx === 1,
-                  "left-[165px]": idx === 2,
-                  "left-[225px] rotate-[5deg]": idx === 3,
+                  "left-[7%] rotate-[-10deg]": idx === 0,
+                  "left-[17%] rotate-[-5deg]": idx === 1,
+                  "left-[27%]": idx === 2,
+                  "left-[37%] rotate-[5deg]": idx === 3,
                 },
               )}
             />
