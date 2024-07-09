@@ -14,17 +14,17 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const classes =
-  "inline-flex items-center justify-center rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 py-4 text-base font-black";
+  "inline-flex items-center justify-center rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 py-4 text-base";
 
 const variantClasses: { [S in ButtonVariant]: string } = {
   "orange-solid":
-    "px-6 bg-carrot-600 text-white hover:bg-carrot-700 focus-visible:outline-carrot-600",
+    "font-black px-6 bg-carrot-600 text-white hover:bg-carrot-700 focus-visible:outline-carrot-600",
   "white-solid":
-    "px-6 bg-white text-grape-500 hover:bg-grape-700 hover:text-white focus-visible:outline-white",
+    "font-black px-6 bg-white text-grape-500 hover:bg-grape-700 hover:text-white focus-visible:outline-white",
   "white-text":
-    "px-2 text-white hover:text-carrot-500  focus-visible:outline-white",
+    "font-bold px-2 text-white hover:text-carrot-500 focus-visible:outline-white",
   "blue-text":
-    "px-2 text-grape-500 hover:text-grape-700 focus-visible:outline-grape-500",
+    "font-bold px-2 text-grape-500 hover:text-grape-700 focus-visible:outline-grape-500",
 };
 
 export function Button({

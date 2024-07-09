@@ -7,6 +7,6 @@ export type ImageCard = MediaCardProps & {
   image: Image;
   title?: string;
   text?: string;
-  button?: Button;
+  button: Button[];
   href?: string;
 };

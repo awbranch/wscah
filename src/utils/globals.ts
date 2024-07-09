@@ -51,7 +51,7 @@ export const themeColors = {
 
 type PaletteClass = {
   [P in Palette]: {
-    [C in "block" | "divide"]: string;
+    [C in "block"]: string;
   };
 };
 
@@ -74,15 +74,12 @@ export const userPaletteButtonProps: {
 export const userPaletteClasses: PaletteClass = {
   white: {
     block: "bg-white text-black",
-    divide: "divide-black",
   },
   gray: {
     block: "bg-gray-100 text-black",
-    divide: "divide-white",
   },
   blue: {
     block: "bg-grape-500 text-white",
-    divide: "divide-grape-300",
   },
 };
 
