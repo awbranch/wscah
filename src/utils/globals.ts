@@ -27,7 +27,12 @@ export const socialMediaImageDimensions = {
 export const themeColors = {
   black: "#111111",
   white: "#ffffff",
-  paper: "#ADADAD",
+  mushroom: {
+    600: "#6A6A6A",
+    500: "#ADADAD",
+    400: "#F8F8F8",
+    300: "#EFEFEF",
+  },
   grape: {
     700: "#1E357C", // darkest
     600: "#32498D", // dark

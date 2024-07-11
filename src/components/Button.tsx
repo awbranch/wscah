@@ -1,4 +1,8 @@
-import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
+import React, {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+} from "react";
 import {
   ChevronRightIcon,
   ChevronLeftIcon,
@@ -66,6 +70,28 @@ export function LinkButton({
     >
       <ButtonContents icon={icon}>{children}</ButtonContents>
     </Link>
+  );
+}
+
+type PsuedoButtonProps = HTMLAttributes<HTMLDivElement> & {
+  variant?: ButtonVariant;
+  icon?: ButtonIcon;
+};
+
+export function PsuedoButton({
+  variant = "orange-solid",
+  icon,
+  className,
+  children,
+  ...props
+}: PsuedoButtonProps) {
+  return (
+    <div
+      className={twMerge(classes, variantClasses[variant], className)}
+      {...props}
+    >
+      <ButtonContents icon={icon}>{children}</ButtonContents>
+    </div>
   );
 }
 

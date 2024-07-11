@@ -2,39 +2,127 @@ import React from "react";
 import { IconCard as Props } from "@/types/IconCard";
 import SvgImage from "@/components/SvgImage";
 import { H2, Para } from "@/components/Typography";
-import { LinkButton } from "@/components/Button";
+import { PsuedoButton, LinkButton } from "@/components/Button";
 import WithLink from "@/components/WithLink";
+import { Palette } from "@/types/Palette";
+import { ClickArea, ButtonVariant } from "@/types/MediaCardSet";
+import clsx from "clsx";
+
+type IconCardProps = Props & {
+  palette?: Palette;
+  clickArea: ClickArea;
+  buttonVariant: ButtonVariant;
+};
 
 export default function IconCard({
-  palette,
+  palette = "white",
   icon,
   title,
   text,
-  button,
+  clickArea,
+  buttonVariant,
+  buttonLabel,
   href,
-}: Props) {
+}: IconCardProps) {
   return (
-    <WithLink href={href}>
-      <div className="group flex h-full cursor-pointer flex-col justify-between rounded-lg p-10 hover:bg-grape-700">
+    <WithLink
+      href={clickArea === "card" || clickArea === "hybrid" ? href : undefined}
+    >
+      <div
+        className={clsx(
+          "flex h-full flex-col justify-between rounded-lg p-10",
+          {
+            "bg-grape-500": palette === "blue",
+            "bg-white": palette === "white",
+            "bg-gray-100": palette === "gray",
+          },
+          (clickArea === "card" || clickArea === "hybrid") && [
+            "group cursor-pointer",
+            {
+              "hover:bg-grape-700": palette === "blue",
+              "hover:bg-gray-100": palette === "white",
+              "hover:bg-white": palette === "gray",
+            },
+          ],
+        )}
+      >
         <div className="flex flex-col items-center gap-4 text-center">
           <SvgImage image={icon} />
-          {title && <H2 className="my-0">{title}</H2>}
-          {title && text && (
-            <hr className="mx-auto w-[26px] border-[3.5px] border-grape-300 transition-all group-hover:w-[116px] group-hover:border-carrot-500" />
-          )}
-          {text && <Para className="my-0">{text}</Para>}
-        </div>
-        {/* {button.length && (
-          <div className="text-center">
-            <LinkButton
-              href={button[0].href}
-              variant={button[0].variant}
-              icon={button[0].icon}
+          {title && (
+            <H2
+              className={clsx("my-0", {
+                "text-grape-600": palette === "white" || palette === "gray",
+                "text-white": palette === "blue",
+              })}
             >
-              {button[0].label}
+              {title}
+            </H2>
+          )}
+          {title && text && (
+            <hr
+              className={clsx(
+                "mx-auto w-[26px] border-[3.5px] transition-all group-hover:w-[116px]",
+                {
+                  "border-carrot-500":
+                    palette === "white" || palette === "gray",
+                  "border-grape-300 group-hover:border-carrot-500":
+                    palette === "blue",
+                },
+              )}
+            />
+          )}
+          {text && (
+            <Para
+              className={clsx("my-0 font-medium", {
+                "text-white": palette === "blue",
+                "text-mushroom-600": palette === "white" || palette === "gray",
+              })}
+            >
+              {text}
+            </Para>
+          )}
+        </div>
+        {clickArea === "hybrid" && buttonLabel && (
+          <div
+            className={clsx("text-center", {
+              "mt-6": buttonVariant === "solid",
+            })}
+          >
+            <PsuedoButton
+              variant={
+                buttonVariant === "solid"
+                  ? "orange-solid"
+                  : palette === "blue"
+                    ? "white-text"
+                    : "blue-text"
+              }
+              icon={buttonVariant === "text" ? "right" : undefined}
+            >
+              {buttonLabel}
+            </PsuedoButton>
+          </div>
+        )}
+        {clickArea === "button" && buttonLabel && href && (
+          <div
+            className={clsx("text-center", {
+              "mt-6": buttonVariant === "solid",
+            })}
+          >
+            <LinkButton
+              variant={
+                buttonVariant === "solid"
+                  ? "orange-solid"
+                  : palette === "blue"
+                    ? "white-text"
+                    : "blue-text"
+              }
+              icon={buttonVariant === "text" ? "right" : undefined}
+              href={href}
+            >
+              {buttonLabel}
             </LinkButton>
           </div>
-        )} */}
+        )}
       </div>
     </WithLink>
   );
