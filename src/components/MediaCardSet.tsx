@@ -1,11 +1,11 @@
 import React from "react";
 import { MediaCardSet as Props } from "@/types/MediaCardSet";
-import IconCard from "./IconCard";
+import IconCard from "@/components/IconCard";
+import ImageCard from "@/components/ImageCard";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 
 export default function MediaCardSet({
-  blockId,
   blockPalette,
   palette,
   clickArea,
@@ -14,7 +14,7 @@ export default function MediaCardSet({
 }: Props) {
   const cardPalette = palette || blockPalette || "white";
   return (
-    <div className="mx-auto text-center">
+    <div className="mx-auto flex justify-center">
       <ul
         role="list"
         className={twMerge(
@@ -57,6 +57,14 @@ export default function MediaCardSet({
           >
             {card._type === "iconCard" && (
               <IconCard
+                {...card}
+                palette={cardPalette}
+                clickArea={clickArea}
+                buttonVariant={buttonVariant}
+              />
+            )}
+            {card._type === "imageCard" && (
+              <ImageCard
                 {...card}
                 palette={cardPalette}
                 clickArea={clickArea}
