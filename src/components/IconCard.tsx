@@ -1,5 +1,5 @@
 import React from "react";
-import { IconCard as Props } from "@/types/IconCard";
+import { IconCard as IconCardType } from "@/types/IconCard";
 import SvgImage from "@/components/SvgImage";
 import { H2, Para } from "@/components/Typography";
 import { PsuedoButton, LinkButton } from "@/components/Button";
@@ -8,14 +8,14 @@ import { Palette } from "@/types/Palette";
 import { ClickArea, ButtonVariant } from "@/types/MediaCardSet";
 import clsx from "clsx";
 
-type IconCardProps = Props & {
-  palette?: Palette;
+type IconCardProps = Omit<IconCardType, "_type" | "_key"> & {
+  palette: Palette;
   clickArea: ClickArea;
   buttonVariant: ButtonVariant;
 };
 
 export default function IconCard({
-  palette = "white",
+  palette,
   icon,
   title,
   text,

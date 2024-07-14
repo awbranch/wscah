@@ -2,7 +2,6 @@ import React, { AnchorHTMLAttributes, HTMLAttributes } from "react";
 import NextLink from "next/link";
 import { twMerge } from "tailwind-merge";
 import { isFullyQualifiedURL } from "@/utils/utils";
-import { userHeaderClasses } from "@/utils/globals";
 
 type Extended = {
   as?: string;

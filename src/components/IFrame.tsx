@@ -1,10 +1,12 @@
 import React from "react";
-import { IFrame as Props } from "@/types/IFrame";
+import { IFrame as IFrameType } from "@/types/IFrame";
+
+type IFrameProps = Omit<IFrameType, "_type" | "_key">;
 
 export default function IFrame({
   blockId,
   blockPalette,
   code,
-}: Props) {
+}: IFrameProps) {
   return <div>IFRAME GOES HERE</div>;
 }

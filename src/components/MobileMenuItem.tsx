@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-type Props = {
+type MobileMenuItemProps = {
   name: string;
   href: string;
   onClick: () => void;
 };
 
-export default function MobileMenuItem({ name, href, onClick }: Props) {
+export default function MobileMenuItem({ name, href, onClick }: MobileMenuItemProps) {
   return (
     <Link
       href={href}

@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-type Props = {
+type MenuItemProps = {
   name: string;
   href: string;
   onClick: () => void;
 };
 
-export default function MenuItem({ name, href, onClick }: Props) {
+export default function MenuItem({ name, href, onClick }: MenuItemProps) {
   return (
     <Link
       href={href}

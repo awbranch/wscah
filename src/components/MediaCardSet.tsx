@@ -2,17 +2,18 @@ import React from "react";
 import { MediaCardSet as Props } from "@/types/MediaCardSet";
 import IconCard from "@/components/IconCard";
 import ImageCard from "@/components/ImageCard";
+import TitleCard from "@/components/TitleCard";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 
 export default function MediaCardSet({
-  blockPalette,
+  blockPalette = "white",
   palette,
   clickArea,
   buttonVariant,
   cards,
 }: Props) {
-  const cardPalette = palette || blockPalette || "white";
+  const cardPalette = palette || blockPalette;
   return (
     <div className="mx-auto flex justify-center">
       <ul
@@ -70,6 +71,9 @@ export default function MediaCardSet({
                 clickArea={clickArea}
                 buttonVariant={buttonVariant}
               />
+            )}
+            {card._type === "titleCard" && (
+              <TitleCard {...card} blockPalette={blockPalette} />
             )}
           </li>
         ))}

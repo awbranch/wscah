@@ -24,7 +24,7 @@ export default function TitleText({
           normal: ({ children }) => (
             <h1
               className={twMerge(
-                "text-4mxl font-bold leading-[120%] md:text-4xl",
+                "text-5mxl font-black leading-[120%] md:text-5xl",
                 userHeaderClasses[blockPalette || "white"],
                 className,
               )}

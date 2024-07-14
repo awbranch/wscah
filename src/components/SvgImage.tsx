@@ -2,12 +2,12 @@ import React, { ImgHTMLAttributes } from 'react';
 import { imageAttributes, urlFor } from '@/utils/sanity';
 import { Image } from '@/types/Image';
 
-type Props = ImgHTMLAttributes<HTMLImageElement> & {
+type SvgImageProps = ImgHTMLAttributes<HTMLImageElement> & {
   image: Image;
   className?: string;
 };
 
-export default function SvgImage({ image, className }: Props) {
+export default function SvgImage({ image, className }: SvgImageProps) {
   const { width, height, format } = imageAttributes(image);
 
   if (format !== 'svg') {

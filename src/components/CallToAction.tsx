@@ -1,12 +1,15 @@
 import React from "react";
 import { twJoin } from "tailwind-merge";
-import { CallToAction as Props } from "@/types/CallToAction";
+import { CallToAction as CallToActionType } from "@/types/CallToAction";
 import TitleText from "@/components/TitleText";
 import Eyebrow from "@/components/Eyebrow";
 import SimpleText from "@/components/SimpleText";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { breakpoints, userPaletteButtonProps } from "@/utils/globals";
 import { LinkButton } from "@/components/Button";
+import clsx from "clsx";
+
+type CallToActionProps = Omit<CallToActionType, "_type" | "_key">;
 
 export default function CallToAction({
   blockPalette,
@@ -16,8 +19,7 @@ export default function CallToAction({
   title,
   text,
   button,
-}: Props) {
-
+}: CallToActionProps) {
   return (
     <div className="relative">
       <div
@@ -43,8 +45,23 @@ export default function CallToAction({
           )}
         >
           {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
-          {title && <TitleText className="[text-wrap:balance]" blockPalette={blockPalette} title={title} />}
-          {text && <SimpleText className="[text-wrap:balance]" text={text} />}
+          {title && (
+            <TitleText
+              className="[text-wrap:balance]"
+              blockPalette={blockPalette}
+              title={title}
+            />
+          )}
+          {text && (
+            <SimpleText
+              className={clsx("[text-wrap:balance]", {
+                "text-grape-600":
+                  blockPalette === "white" || blockPalette === "gray",
+                "text-white": blockPalette === "blue",
+              })}
+              text={text}
+            />
+          )}
           {button && button[0] && (
             <LinkButton
               variant={button[0].variant}

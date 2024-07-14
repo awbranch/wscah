@@ -1,5 +1,7 @@
 import React from "react";
-import { Announcement as Props } from "@/types/Announcement";
+import { Announcement as AnnouncementType } from "@/types/Announcement";
+
+type AnnouncementProps = Omit<AnnouncementType, "_type" | "_key">;
 
 export default function Announcement({
   blockId,
@@ -9,6 +11,6 @@ export default function Announcement({
   title,
   text,
   button,
-}: Props) {
+}: AnnouncementProps) {
   return <div>ANNOUNCEMENT GOES HERE</div>;
 }

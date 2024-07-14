@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageCard as Props } from "@/types/ImageCard";
+import { ImageCard as ImageCardType } from "@/types/ImageCard";
 import { Palette } from "@/types/Palette";
 import { ClickArea, ButtonVariant } from "@/types/MediaCardSet";
 import { H2, Para } from "@/components/Typography";
@@ -8,14 +8,14 @@ import ResponsiveImage from "@/components/ResponsiveImage";
 import WithLink from "@/components/WithLink";
 import clsx from "clsx";
 
-type ImageCardProps = Props & {
-  palette?: Palette;
+type ImageCardProps = Omit<ImageCardType, "_type" | "_key"> & {
+  palette: Palette;
   clickArea: ClickArea;
   buttonVariant: ButtonVariant;
 };
 
 export default function ImageCard({
-  palette = "white",
+  palette,
   image,
   title,
   text,
@@ -28,9 +28,10 @@ export default function ImageCard({
     <WithLink
       href={clickArea === "card" || clickArea === "hybrid" ? href : undefined}
     >
+      {/* Wrapper */}
       <div
         className={clsx(
-          "flex h-full flex-col justify-between rounded-lg",
+          "flex h-full flex-col rounded-lg",
           {
             "bg-grape-500": palette === "blue",
             "bg-white": palette === "white",
@@ -51,85 +52,82 @@ export default function ImageCard({
           image={image}
           sizes={"100vw"}
         />
-
-        <div className="p-10">
-          <div className="flex flex-col gap-4">
-            {title && (
-              <H2
-                className={clsx("my-0 text-2mxl md:text-2xl", {
-                  "text-grape-600": palette === "white" || palette === "gray",
-                  "text-white": palette === "blue",
-                })}
-              >
-                {title}
-              </H2>
-            )}
-            {title && text && (
-              <hr
-                className={clsx(
-                  "w-[26px] border-[3.5px] transition-all group-hover:w-[116px]",
-                  {
-                    "border-carrot-500":
+        <div className="flex h-full flex-col justify-between p-10">
+          <div>
+            <div className="flex flex-col gap-4">
+              {title && (
+                <H2
+                  className={clsx("my-0 text-2mxl md:text-2xl", {
+                    "text-grape-600": palette === "white" || palette === "gray",
+                    "text-white": palette === "blue",
+                  })}
+                >
+                  {title}
+                </H2>
+              )}
+              {title && text && (
+                <hr
+                  className={clsx(
+                    "w-[26px] border-[3.5px] transition-all group-hover:w-[116px]",
+                    {
+                      "border-carrot-500":
+                        palette === "white" || palette === "gray",
+                      "border-grape-300 group-hover:border-carrot-500":
+                        palette === "blue",
+                    },
+                  )}
+                />
+              )}
+              {text && (
+                <Para
+                  className={clsx("my-0 font-medium", {
+                    "text-white": palette === "blue",
+                    "text-mushroom-600":
                       palette === "white" || palette === "gray",
-                    "border-grape-300 group-hover:border-carrot-500":
-                      palette === "blue",
-                  },
-                )}
-              />
-            )}
-            {text && (
-              <Para
-                className={clsx("my-0 font-medium", {
-                  "text-white": palette === "blue",
-                  "text-mushroom-600":
-                    palette === "white" || palette === "gray",
+                  })}
+                >
+                  {text}
+                </Para>
+              )}
+            </div>
+          </div>
+          {(clickArea === "hybrid" || clickArea === "button") &&
+            buttonLabel && (
+              <div
+                className={clsx({
+                  "mt-6": buttonVariant === "solid",
                 })}
               >
-                {text}
-              </Para>
+                {clickArea === "hybrid" ? (
+                  <PsuedoButton
+                    variant={
+                      buttonVariant === "solid"
+                        ? "orange-solid"
+                        : palette === "blue"
+                          ? "white-text"
+                          : "blue-text"
+                    }
+                    icon={buttonVariant === "text" ? "right" : undefined}
+                  >
+                    {buttonLabel}
+                  </PsuedoButton>
+                ) : (
+                  <LinkButton
+                    variant={
+                      buttonVariant === "solid"
+                        ? "orange-solid"
+                        : palette === "blue"
+                          ? "white-text"
+                          : "blue-text"
+                    }
+                    icon={buttonVariant === "text" ? "right" : undefined}
+                    href={href || "#"}
+                  >
+                    {buttonLabel}
+                  </LinkButton>
+                )}
+              </div>
             )}
-          </div>
-          {clickArea === "hybrid" && buttonLabel && (
-            <div
-              className={clsx({
-                "mt-6": buttonVariant === "solid",
-              })}
-            >
-              <PsuedoButton
-                variant={
-                  buttonVariant === "solid"
-                    ? "orange-solid"
-                    : palette === "blue"
-                      ? "white-text"
-                      : "blue-text"
-                }
-                icon={buttonVariant === "text" ? "right" : undefined}
-              >
-                {buttonLabel}
-              </PsuedoButton>
-            </div>
-          )}
-          {clickArea === "button" && buttonLabel && href && (
-            <div
-              className={clsx({
-                "mt-6": buttonVariant === "solid",
-              })}
-            >
-              <LinkButton
-                variant={
-                  buttonVariant === "solid"
-                    ? "orange-solid"
-                    : palette === "blue"
-                      ? "white-text"
-                      : "blue-text"
-                }
-                icon={buttonVariant === "text" ? "right" : undefined}
-                href={href}
-              >
-                {buttonLabel}
-              </LinkButton>
-            </div>
-          )}
         </div>
       </div>
     </WithLink>

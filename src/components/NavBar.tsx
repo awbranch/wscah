@@ -32,7 +32,7 @@ import { PortableTextBlock } from "sanity";
 import AlertBar from "@/components/AlertBar";
 import { AlertPalette } from "@/types/Header";
 
-type Props = {
+type NavBarProps = {
   menus: Menu[];
   pagePalette: Record<string, Palette>;
   alert?: {
@@ -43,7 +43,7 @@ type Props = {
 
 // TODO: Use https://popper.js.org/react-popper/v2/hook/ to ensure menu stays in view
 
-export default function NavBar({ menus, pagePalette, alert }: Props) {
+export default function NavBar({ menus, pagePalette, alert }: NavBarProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const palette = pagePalette[pathname] || "white";

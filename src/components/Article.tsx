@@ -1,5 +1,5 @@
 import React from "react";
-import { Article as Props } from "@/types/Article";
+import { Article as ArticleType } from "@/types/Article";
 import { PortableText } from "@portabletext/react";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { CaptionedImage } from "@/types/CaptionedImage";
@@ -22,7 +22,9 @@ import {
   UL,
 } from "@/components/Typography";
 
-export default function Article({ blockPalette, text, columns }: Props) {
+type ArticleProps = Omit<ArticleType, "_type" | "_key">;
+
+export default function Article({ blockPalette, text, columns }: ArticleProps) {
   const palette = blockPalette || "white";
   return (
     <div className={"margins-y-0"}>

@@ -13,7 +13,7 @@ const variantClasses: { [V in Variant]: string } = {
     "font-black px-6 py-4 rounded-md bg-carrot-600 text-white hover:bg-carrot-700 focus-visible:outline-carrot-600",
 };
 
-type Props = {
+type MobileMenuButtonProps = {
   name: string;
   variant: Variant;
 } & (
@@ -28,7 +28,7 @@ type Props = {
     }
 );
 
-export default function MobileMenuButton(props: Props) {
+export default function MobileMenuButton(props: MobileMenuButtonProps) {
   const { name, variant, menu } = props;
   if (menu) {
     const { open } = props;

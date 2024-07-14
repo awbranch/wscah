@@ -1,9 +1,14 @@
 import React from "react";
-import { ButtonRow as Props } from "@/types/ButtonRow";
+import { ButtonRow as ButtonRowType } from "@/types/ButtonRow";
 import { LinkButton } from "@/components/Button";
 import { twJoin } from "tailwind-merge";
 
-export default async function ButtonRow({ alignment, buttons }: Props) {
+type ButtonRowProps = Omit<ButtonRowType, "_type" | "_key">;
+
+export default async function ButtonRow({
+  alignment,
+  buttons,
+}: ButtonRowProps) {
   return (
     <div
       className={twJoin(

@@ -3,7 +3,7 @@ import { imageAttributes, urlFor } from "@/utils/sanity";
 import { Image } from "@/types/Image";
 import { twMerge } from "tailwind-merge";
 
-type Props = ImgHTMLAttributes<HTMLImageElement> & {
+type ResponsiveImageProps = ImgHTMLAttributes<HTMLImageElement> & {
   image: Image;
   sizes: string;
   priority?: boolean;
@@ -17,7 +17,7 @@ export default function ResponsiveImage({
   sizes,
   priority = false,
   className,
-}: Props) {
+}: ResponsiveImageProps) {
   if (!image?.asset) {
     return <></>;
   }

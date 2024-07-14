@@ -6,7 +6,7 @@ import { Palette } from "@/types/Palette";
 
 import { userPaletteClasses } from "@/utils/globals";
 
-type Props = {
+type SectionProps = {
   id?: string;
   palette?: Palette;
   maxWidth?: PageWidth;
@@ -20,7 +20,7 @@ export default function Section({
   maxWidth = "lg",
   className,
   children,
-}: Props) {
+}: SectionProps) {
   return (
     <section
       id={id}

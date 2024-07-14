@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero as Props } from "@/types/Hero";
+import { Hero as HeroType } from "@/types/Hero";
 import { LinkButton } from "@/components/Button";
 import TitleText from "@/components/TitleText";
 import ResponsiveImage from "@/components/ResponsiveImage";
@@ -7,6 +7,8 @@ import { breakpoints } from "@/utils/globals";
 import clsx from "clsx";
 import { PortableText } from "@portabletext/react";
 import { Link, Small } from "@/components/Typography";
+
+type HeroProps = Omit<HeroType, "_type" | "_key">;
 
 export default function Hero({
   blockId,
@@ -17,7 +19,7 @@ export default function Hero({
   display,
   images,
   button,
-}: Props) {
+}: HeroProps) {
   return (
     <div
       className={
