@@ -19,6 +19,7 @@ export default function TitleCard({
         blockPalette={blockPalette}
         eyebrow={eyebrow}
         title={title}
+        titleSize="lg"
         text={text}
         alignment="left"
       />

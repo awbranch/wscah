@@ -1,7 +1,7 @@
 import React from "react";
 import { Hero as HeroType } from "@/types/Hero";
 import { LinkButton } from "@/components/Button";
-import TitleText from "@/components/TitleText";
+import HighlightedTitle from "@/components/HighlightedTitle";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { breakpoints } from "@/utils/globals";
 import clsx from "clsx";
@@ -27,7 +27,7 @@ export default function Hero({
       }
     >
       <div className={"flex flex-col items-center gap-6 px-[20px]"}>
-        <TitleText
+        <HighlightedTitle
           title={title}
           blockPalette={blockPalette}
           alignment="center"

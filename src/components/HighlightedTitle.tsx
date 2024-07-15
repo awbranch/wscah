@@ -2,11 +2,9 @@ import React from "react";
 import { PortableTextBlock } from "sanity";
 import { PortableText } from "@portabletext/react";
 import { Palette } from "@/types/Palette";
-import { twMerge } from "tailwind-merge";
-import { userHeaderClasses } from "@/utils/globals";
-import clsx from "clsx";
+import SimpleTitle from "@/components/SimpleTitle";
 
-type TitleTextProps = {
+type HighlightedTitleProps = {
   title: PortableTextBlock[];
   blockPalette?: Palette;
   alignment?: "left" | "center" | "right";
@@ -14,36 +12,27 @@ type TitleTextProps = {
   balanceText?: boolean;
 };
 
-export default function TitleText({
+export default function HighlightedTitle({
   title,
   blockPalette,
   alignment,
   textSize = "lg",
   balanceText = false,
-}: TitleTextProps) {
+}: HighlightedTitleProps) {
   return (
     <PortableText
       value={title}
       components={{
         block: {
           normal: ({ children }) => (
-            <h1
-              className={clsx(
-                "leading-[120%]",
-                {
-                  "[text-wrap:balance]": balanceText,
-                  "text-[32px] font-black md:text-6xl": textSize === "xl",
-                  "text-[30px] font-black md:text-5xl": textSize === "lg",
-                  "text-[25px] font-bold md:text-4xl": textSize === "md",
-                  "text-left": alignment === "left",
-                  "text-center": alignment === "center",
-                  "text-right": alignment === "right",
-                },
-                userHeaderClasses[blockPalette || "white"],
-              )}
+            <SimpleTitle
+              blockPalette={blockPalette}
+              alignment={alignment}
+              textSize={textSize}
+              balanceText={balanceText}
             >
               {children}
-            </h1>
+            </SimpleTitle>
           ),
         },
         marks: {

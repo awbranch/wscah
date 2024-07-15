@@ -1,14 +1,14 @@
 import React from "react";
 import { Title as Props } from "@/types/Title";
 import Eyebrow from "@/components/Eyebrow";
-import TitleText from "@/components/TitleText";
+import HighlightedTitle from "@/components/HighlightedTitle";
 import clsx from "clsx";
-import SimpleText from "./SimpleText";
+import SimpleText from "@/components/SimpleText";
 
 type TileProps = Omit<Props, "_type" | "_key">;
 
 export default function Title({
-  blockPalette,
+  blockPalette = "white",
   eyebrow,
   title,
   titleSize,
@@ -31,7 +31,7 @@ export default function Title({
       <div className={clsx("space-y-3")}>
         {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
         {title && (
-          <TitleText
+          <HighlightedTitle
             textSize={titleSize}
             blockPalette={blockPalette}
             title={title}

@@ -26,9 +26,9 @@ const variantClasses: { [S in ButtonVariant]: string } = {
   "white-solid":
     "font-black px-6 bg-white text-grape-500 hover:bg-grape-700 hover:text-white focus-visible:outline-white",
   "white-text":
-    "font-bold px-2 text-white hover:text-carrot-500 focus-visible:outline-white",
+    "font-bold px-0 text-white hover:text-carrot-500 focus-visible:outline-white",
   "blue-text":
-    "font-bold px-2 text-grape-500 hover:text-grape-700 focus-visible:outline-grape-500",
+    "font-bold px-0 text-grape-500 hover:text-grape-700 focus-visible:outline-grape-500",
 };
 
 export function Button({

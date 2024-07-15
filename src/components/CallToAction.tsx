@@ -1,7 +1,7 @@
 import React from "react";
 import { twJoin } from "tailwind-merge";
 import { CallToAction as CallToActionType } from "@/types/CallToAction";
-import TitleText from "@/components/TitleText";
+import HighlightedTitle from "@/components/HighlightedTitle";
 import Eyebrow from "@/components/Eyebrow";
 import SimpleText from "@/components/SimpleText";
 import ResponsiveImage from "@/components/ResponsiveImage";
@@ -12,7 +12,7 @@ import clsx from "clsx";
 type CallToActionProps = Omit<CallToActionType, "_type" | "_key">;
 
 export default function CallToAction({
-  blockPalette,
+  blockPalette = "white",
   orientation,
   image,
   eyebrow,
@@ -46,7 +46,7 @@ export default function CallToAction({
         >
           {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
           {title && (
-            <TitleText
+            <HighlightedTitle
               balanceText={true}
               textSize="lg"
               blockPalette={blockPalette}
