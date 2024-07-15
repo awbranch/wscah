@@ -18,11 +18,14 @@ export default function DataCard({
 }: DataCardProps) {
   return (
     <div
-      className={clsx("flex h-full flex-col justify-between rounded-lg p-10", {
-        "bg-grape-500": palette === "blue",
-        "bg-white": palette === "white",
-        "bg-gray-100": palette === "gray",
-      })}
+      className={clsx(
+        "flex h-full flex-col justify-between rounded-lg px-6 py-10",
+        {
+          "bg-grape-500": palette === "blue",
+          "bg-white": palette === "white",
+          "bg-gray-100": palette === "gray",
+        },
+      )}
     >
       <div className="h-full">
         <div className="flex flex-col gap-4">

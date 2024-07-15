@@ -15,10 +15,14 @@ export default function DataChart({ palette, units, data }: DataChartProps) {
   return (
     <div className={userPaletteClasses[palette].block}>
       <div className="h-[175px]"></div>
-      <div className="flex flex-row justify-between align-middle">
-        <DataLabel units={units} point={data[0]} />
-        <DataLabel units={units} point={data[data.length - 1]} />
-      </div>
+      {data.length === 0 ? (
+        <div className="h-full text-center">NO DATA</div>
+      ) : (
+        <div className="flex flex-row justify-between align-middle">
+          <DataLabel units={units} point={data[0]} />
+          <DataLabel units={units} point={data[data.length - 1]} />
+        </div>
+      )}
     </div>
   );
 }
