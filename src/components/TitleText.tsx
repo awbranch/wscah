@@ -56,7 +56,7 @@ export default function TitleText({
             </span>
           ),
           "highlight-green": ({ children }) => (
-            <span className="bg-kale-600 px-[1px] text-white">{children}</span>
+            <span className="bg-kale-700 px-[1px] text-white">{children}</span>
           ),
         },
       }}

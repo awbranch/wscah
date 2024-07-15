@@ -1,8 +1,9 @@
 import React from "react";
 import { MediaCardSet as Props } from "@/types/MediaCardSet";
+import TitleCard from "@/components/TitleCard";
 import IconCard from "@/components/IconCard";
 import ImageCard from "@/components/ImageCard";
-import TitleCard from "@/components/TitleCard";
+import DataCard from "@/components/DataCard";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 
@@ -56,6 +57,9 @@ export default function MediaCardSet({
               ),
             )}
           >
+            {card._type === "titleCard" && (
+              <TitleCard {...card} blockPalette={blockPalette} />
+            )}
             {card._type === "iconCard" && (
               <IconCard
                 {...card}
@@ -72,8 +76,8 @@ export default function MediaCardSet({
                 buttonVariant={buttonVariant}
               />
             )}
-            {card._type === "titleCard" && (
-              <TitleCard {...card} blockPalette={blockPalette} />
+            {card._type === "dataCard" && (
+              <DataCard {...card} palette={cardPalette} />
             )}
           </li>
         ))}
