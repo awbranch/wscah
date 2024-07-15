@@ -47,7 +47,8 @@ export default function CallToAction({
           {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
           {title && (
             <TitleText
-              className="[text-wrap:balance]"
+              balanceText={true}
+              textSize="lg"
               blockPalette={blockPalette}
               title={title}
             />

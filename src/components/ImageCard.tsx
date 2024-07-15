@@ -57,7 +57,7 @@ export default function ImageCard({
             <div className="flex flex-col gap-4">
               {title && (
                 <H2
-                  className={clsx("my-0 text-2mxl md:text-2xl", {
+                  className={clsx("my-0 text-[25px] md:text-2xl", {
                     "text-grape-600": palette === "white" || palette === "gray",
                     "text-white": palette === "blue",
                   })}

@@ -22,14 +22,6 @@ const config: Config = {
       "5xl": "45px", // Header L - H1 - Black
       "6xl": "50px", // Header XL - Hero - Black
       "7xl": "70px", // Header XXL - Black
-
-      mxl: "12px", // Mobile Header XXS - Black, Uppercase
-      "2mxl": "15px", // Mobile Header XS - Bold
-      "3mxl": "22px", // Mobile Header S - H2 - Bold
-      "4mxl": "25px", // Mobile Header M - H2 - Bold
-      "5mxl": "30px", // Mobile Header L - H1 - Black
-      "6mxl": "32px", // Mobile Header XL - Hero - Black
-      "7mxl": "40px", // Mobile Header XXL - Black
     },
     borderRadius: {
       none: "0",

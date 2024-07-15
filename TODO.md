@@ -108,16 +108,15 @@ Text
   // The text color is dictated by the block it sits in
   alignment - left / center / right
 
-  // Text Styles
+# Text Styles
 
-| sanity          | styling                            | html   |
+| sanity          | desktop styling                    | html   |
 | ----------------| ---------------------------------- | ------ |
 | Heading 1       | 5XL Font                           | h1     |
 | Heading 2       | 3XL Font                           | h2     |
 | Heading 3       | 2XL Font                           | h3     |
 | Large           | Body Large                         | p      |
 | Normal          | Body Regular                       | p      |
-  href
 | Small           | Body Small                         | p      |
 | Bold            | Doesn't work on headings           | strong |
 | Italic          | Doesn't work on headings           | em     |
@@ -126,6 +125,32 @@ Text
 | Image           | Inline, w/ wrapping and align?     | img    |
 | Bulleted List   | Block element list                 | ul     | 
 | Numbered List   | Block element list                 | ol     |  
+
+
+# Text Sizes
+| Figma                                       | Tailwind | Note                              | Orig TW |
+| -------------------------------------- | -------- | -------------------------------------- | ------- |
+| Desktop: XXL, Type Gotham Black 70     | 7xl      | Not Used                               | 72px    |
+| Desktop: XL, Typeface Gotham Black 50  | 6xl      | Hero                                   | 60px    |
+| Desktop: L, Typeface Gotham Black 45   | 5xl      | Typography H1, TitleText lg, CTA Title | 48px    |
+| Desktop: M, Typeface Gotham Bold 40    | 4xl      | TitleText md                           | 36px    |
+| Desktop: S, Typeface Gotham Bold 35    | 3xl      | Typography H2, IconCard Title          | 30px    |
+| Desktop: XS, Typeface Gotham Bold 24   | 2xl      | Typography H3, ImageCard Title         | 24px    |
+| Desktop: XXS, Typeface Gotham Black 20 | xl       | Not Used                               | 20px    |
+| Desktop: SPECIAL Wikid Grid 35         |          | SVG only                               |         |
+| Mobile: XXL, Typeface Gotham Bold 40   |          |                                        |         |
+| Mobile: XL, Typeface Gotham Black 32   | -[32px]  |                                        |         |
+| Mobile: L, Typeface Gotham Black 30    | -[30px]  |                                        |         |
+| Mobile: M, Typeface Gotham Bold 25     | -[25px]  |                                        |         |
+| Mobile: S, Typeface Gotham Bold 22     | -[22px]  |                                        |         |
+| Mobile: XS, Typeface Gotham Black 15   | -[15px]  |                                        |         |
+| Mobile: XXS, Typeface gotham Black 12  | -[12px]  |                                        |         |
+| Mobile: SPECIAL WIKID GRIT 20          |          |                                        |         |
+| Body: Large Gotham 18                  | lg       |                                        | 18px    |
+| Body: Regular Gotham 16                | base     |                                        | 16px    |
+| Body: Small Gotham 15                  | sm       |                                        | 14px    |
+| Body: Tiny Gotham 12                   | xs       |                                        | 12px    |
+    
 
     
 Spacings

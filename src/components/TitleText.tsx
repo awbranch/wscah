@@ -4,17 +4,22 @@ import { PortableText } from "@portabletext/react";
 import { Palette } from "@/types/Palette";
 import { twMerge } from "tailwind-merge";
 import { userHeaderClasses } from "@/utils/globals";
+import clsx from "clsx";
 
 type TitleTextProps = {
   title: PortableTextBlock[];
   blockPalette?: Palette;
-  className?: string;
+  alignment?: "left" | "center" | "right";
+  textSize?: "md" | "lg" | "xl";
+  balanceText?: boolean;
 };
 
 export default function TitleText({
   title,
   blockPalette,
-  className,
+  alignment,
+  textSize = "lg",
+  balanceText = false,
 }: TitleTextProps) {
   return (
     <PortableText
@@ -23,10 +28,18 @@ export default function TitleText({
         block: {
           normal: ({ children }) => (
             <h1
-              className={twMerge(
-                "text-5mxl font-black leading-[120%] md:text-5xl",
+              className={clsx(
+                "leading-[120%]",
+                {
+                  "[text-wrap:balance]": balanceText,
+                  "text-[32px] font-black md:text-6xl": textSize === "xl",
+                  "text-[30px] font-black md:text-5xl": textSize === "lg",
+                  "text-[25px] font-bold md:text-4xl": textSize === "md",
+                  "text-left": alignment === "left",
+                  "text-center": alignment === "center",
+                  "text-right": alignment === "right",
+                },
                 userHeaderClasses[blockPalette || "white"],
-                className,
               )}
             >
               {children}

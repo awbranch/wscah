@@ -30,7 +30,8 @@ export default function Hero({
         <TitleText
           title={title}
           blockPalette={blockPalette}
-          className="text-center text-6mxl font-black md:text-6xl"
+          alignment="center"
+          textSize="xl"
         />
         <div className="text-center text-lg">{subtitle}</div>
 

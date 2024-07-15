@@ -17,7 +17,7 @@ export const H1 = ({
     as || "h1",
     {
       className: twMerge(
-        "text-5mxl mb-4 mt-10 font-black leading-tight md:text-5xl",
+        "text-[30px] mb-4 mt-10 font-black leading-tight md:text-5xl",
         className,
       ),
       ...rest,
@@ -35,7 +35,7 @@ export const H2 = ({
     as || "h2",
     {
       className: twMerge(
-        "text-3mxl leading-tight md:text-3xl mb-4 mt-8 font-bold",
+        "text-[22px] leading-tight md:text-3xl mb-4 mt-8 font-bold",
         className,
       ),
       ...rest,
@@ -53,7 +53,7 @@ export const H3 = ({
     as || "h3",
     {
       className: twMerge(
-        "text-2mxl mb-4 mt-8 font-bold leading-tight md:text-2xl",
+        "text-[15px] mb-4 mt-8 font-bold leading-tight md:text-2xl",
         className,
       ),
       ...rest,

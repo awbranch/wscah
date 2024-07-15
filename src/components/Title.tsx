@@ -11,6 +11,7 @@ export default function Title({
   blockPalette,
   eyebrow,
   title,
+  titleSize,
   text,
   alignment,
   maxWidth,
@@ -30,7 +31,11 @@ export default function Title({
       <div className={clsx("space-y-3")}>
         {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
         {title && (
-          <TitleText className="" blockPalette={blockPalette} title={title} />
+          <TitleText
+            textSize={titleSize}
+            blockPalette={blockPalette}
+            title={title}
+          />
         )}
       </div>
       {text && (
