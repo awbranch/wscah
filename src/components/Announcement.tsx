@@ -16,7 +16,8 @@ export default function Announcement({
   eyebrow,
   title,
   text,
-  button,
+  buttonLabel,
+  buttonHref,
 }: AnnouncementProps) {
   return (
     <div
@@ -55,15 +56,9 @@ export default function Announcement({
             {text && <SimpleText className={"text-white"} text={text} />}
           </div>
         </div>
-        {button[0] && (
-          <LinkButton
-            href={button[0].href}
-            variant={button[0].variant}
-            icon={button[0].icon}
-          >
-            {button[0].label}
-          </LinkButton>
-        )}
+        <LinkButton href={buttonHref} variant={"orange-solid"}>
+          {buttonLabel}
+        </LinkButton>
       </div>
     </div>
   );

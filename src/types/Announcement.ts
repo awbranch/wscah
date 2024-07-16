@@ -9,5 +9,6 @@ export type Announcement = ComponentProps & {
   eyebrow?: string;
   title: string;
   text?: string;
-  button: Button[];
+  buttonLabel: string;
+  buttonHref: string;
 };
