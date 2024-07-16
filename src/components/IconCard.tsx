@@ -41,7 +41,7 @@ export default function IconCard({
             "group cursor-pointer",
             {
               "hover:bg-grape-700": palette === "blue",
-              "hover:bg-gray-100": palette === "white",
+              "hover:shadow-md": palette === "white",
               "hover:bg-white": palette === "gray",
             },
           ],

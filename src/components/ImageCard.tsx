@@ -44,7 +44,7 @@ export default function ImageCard({
             "group cursor-pointer",
             {
               "hover:bg-grape-700": palette === "blue",
-              "hover:bg-gray-100": palette === "white",
+              "hover:shadow-md": palette === "white",
               "hover:bg-white": palette === "gray",
             },
           ],
@@ -86,7 +86,7 @@ export default function ImageCard({
               {text && (
                 <SimpleText
                   text={text}
-                  className={clsx("my-0 font-medium line-clamp-6", {
+                  className={clsx("my-0 line-clamp-6 font-medium", {
                     "text-white": palette === "blue",
                     "text-mushroom-600":
                       palette === "white" || palette === "gray",
