@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Announcement as AnnouncementType,
-  AnnouncementStyle,
-} from "@/types/Announcement";
+import { Announcement as AnnouncementType } from "@/types/Announcement";
 import SimpleText from "@/components/SimpleText";
 import { LinkButton } from "@/components/Button";
 import clsx from "clsx";
-import ReactDOMServer from "react-dom/server";
 type AnnouncementProps = Omit<AnnouncementType, "_type" | "_key">;
 
 export default function Announcement({
