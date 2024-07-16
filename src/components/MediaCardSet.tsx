@@ -1,5 +1,5 @@
 import React from "react";
-import { MediaCardSet as Props } from "@/types/MediaCardSet";
+import { MediaCardSet as MediaCardSetType } from "@/types/MediaCardSet";
 import TitleCard from "@/components/TitleCard";
 import IconCard from "@/components/IconCard";
 import ImageCard from "@/components/ImageCard";
@@ -7,13 +7,15 @@ import DataCard from "@/components/DataCard";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 
+type MediaCardSetProps = Omit<MediaCardSetType, "_type" | "_key">;
+
 export default function MediaCardSet({
   blockPalette = "white",
   palette,
   clickArea,
-  buttonVariant,
+  buttonVariant = "solid",
   cards,
-}: Props) {
+}: MediaCardSetProps) {
   const cardPalette = palette || blockPalette;
   return (
     <div className="mx-auto flex justify-center">

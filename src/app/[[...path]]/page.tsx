@@ -1,5 +1,4 @@
 import {
-  getHeader,
   getPageByPath,
   getPages,
   getSettings,

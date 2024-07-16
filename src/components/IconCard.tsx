@@ -1,7 +1,8 @@
 import React from "react";
 import { IconCard as IconCardType } from "@/types/IconCard";
 import SvgImage from "@/components/SvgImage";
-import { H2, Para } from "@/components/Typography";
+import { H2 } from "@/components/Typography";
+import SimpleText from "@/components/SimpleText";
 import { PsuedoButton, LinkButton } from "@/components/Button";
 import WithLink from "@/components/WithLink";
 import { Palette } from "@/types/Palette";
@@ -72,14 +73,13 @@ export default function IconCard({
             />
           )}
           {text && (
-            <Para
-              className={clsx("my-0 font-medium", {
+            <SimpleText
+              className={clsx("my-0 line-clamp-6 font-medium", {
                 "text-white": palette === "blue",
                 "text-mushroom-600": palette === "white" || palette === "gray",
               })}
-            >
-              {text}
-            </Para>
+              text={text}
+            />
           )}
         </div>
         {clickArea === "hybrid" && buttonLabel && (

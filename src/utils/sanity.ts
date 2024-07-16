@@ -5,6 +5,7 @@ import { Page } from "@/types/Page";
 import { Footer } from "@/types/Footer";
 import { Header } from "@/types/Header";
 import { Settings } from "@/types/Settings";
+import { NewsStory } from "@/types/NewsStory";
 
 const client = createClient({
   projectId: "n427st2j",
@@ -128,6 +129,16 @@ export async function getFooter() {
   return client.fetch<Footer>(
     groq`*[_type == "footer"][0]`,
     {},
+    fetchOptions()
+  );
+}
+
+export async function getLatestNews(count: number) {
+  return client.fetch<NewsStory[]>(
+    groq`*[_type == "newsStory" && hidden != true]{..., categories[]->{label, value}} | order(date desc) [0...$count]`,
+    {
+      count: count
+    },
     fetchOptions()
   );
 }

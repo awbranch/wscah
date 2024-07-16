@@ -1,10 +1,29 @@
 import React from "react";
 import { LatestNews as Props } from "@/types/LatestNews";
+import { getLatestNews } from "@/utils/sanity";
+import LatestNewsClient from "@/components/LatestNewsClient";
 
-export default function LatestNews({
+export default async function LatestNews({
   blockId,
   blockPalette,
   count,
 }: Props) {
-  return <div>LATEST NEWS GOES HERE</div>;
+  // Fetch the latest news
+  const stories = await getLatestNews(count);
+
+  return (
+    <LatestNewsClient
+      blockId={blockId}
+      blockPalette={blockPalette}
+      stories={stories.map((s) => ({
+        _id: s._id,
+        date: s.date,
+        title: s.title,
+        slug: s.slug,
+        summary: s.summary,
+        image: s.previewImage,
+        categories: s.categories,
+      }))}
+    />
+  );
 }

@@ -9,6 +9,6 @@ export type MediaCardSet = ComponentProps & {
   _type: "mediaCardSet";
   palette?: Palette;
   clickArea: ClickArea;
-  buttonVariant: ButtonVariant;
+  buttonVariant?: ButtonVariant;
   cards: MediaCard[];
 };

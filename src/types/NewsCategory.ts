@@ -1,6 +1,6 @@
 export type NewsCategory = {
   _type: "newsCategory";
   _key: string;
-  id: string;
+  value: string;
   label: string;
 };

@@ -1,8 +1,10 @@
 import React from "react";
 import { ImageCard as ImageCardType } from "@/types/ImageCard";
 import { Palette } from "@/types/Palette";
+import Eyebrow from "@/components/Eyebrow";
 import { ClickArea, ButtonVariant } from "@/types/MediaCardSet";
-import { H2, Para } from "@/components/Typography";
+import { H2 } from "@/components/Typography";
+import SimpleText from "@/components/SimpleText";
 import { PsuedoButton, LinkButton } from "@/components/Button";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import WithLink from "@/components/WithLink";
@@ -17,6 +19,7 @@ type ImageCardProps = Omit<ImageCardType, "_type" | "_key"> & {
 export default function ImageCard({
   palette,
   image,
+  eyebrow,
   title,
   text,
   clickArea,
@@ -55,6 +58,8 @@ export default function ImageCard({
         <div className="flex h-full flex-col justify-between p-10">
           <div>
             <div className="flex flex-col gap-4">
+              {eyebrow && <Eyebrow blockPalette={palette} text={eyebrow} />}
+
               {title && (
                 <H2
                   className={clsx("my-0 text-[25px] md:text-2xl", {
@@ -79,15 +84,14 @@ export default function ImageCard({
                 />
               )}
               {text && (
-                <Para
-                  className={clsx("my-0 font-medium", {
+                <SimpleText
+                  text={text}
+                  className={clsx("my-0 font-medium line-clamp-6", {
                     "text-white": palette === "blue",
                     "text-mushroom-600":
                       palette === "white" || palette === "gray",
                   })}
-                >
-                  {text}
-                </Para>
+                />
               )}
             </div>
           </div>
