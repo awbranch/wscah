@@ -85,7 +85,7 @@ export default async function Footer() {
                 )}
                 {fax && <span className="block">Fax: {fax}</span>}
               </address>
-              <ul className="flex gap-4">
+              <ul className="flex gap-3">
                 {social.map((s) => (
                   <li key={s.service}>
                     <SocialIcon service={s.service} url={s.url} />
