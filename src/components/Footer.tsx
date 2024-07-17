@@ -58,61 +58,71 @@ export default async function Footer() {
         </Container>
       )}
 
-      <Container>
-        <div className="grid grid-cols-1 gap-6 pb-20 pt-10 md:grid-cols-2">
-          <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
-            <div className="flex-none">
-              <img className="flex-none" src="/logo-light.svg" width="52" />
-            </div>
-            <div className="space-y-6 text-center md:text-left">
-              <div className="space-y-[10px]">
-                <div className="">{organization}</div>
-                <div className="inline-block divide-y">
-                  {addresses.map((add, i) => (
-                    <address key={i} className="py-1 not-italic">
-                      {add.street}
-                      <br />
-                      {add.city} {add.state}, {add.zip}
-                    </address>
-                  ))}
-                </div>
+      <div
+        className="pb-[150px]"
+        style={{
+          backgroundImage: `url('/confetti.svg')`,
+          backgroundSize: "1440px 600px",
+          backgroundPosition: "bottom -150px center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <Container>
+          <div className="grid grid-cols-1 gap-6 pb-20 pt-10 md:grid-cols-2">
+            <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
+              <div className="flex-none">
+                <img className="flex-none" src="/logo-light.svg" width="52" />
               </div>
-              <address className="not-italic">
-                {phone && (
-                  <span className="block">
-                    Telephone:{" "}
-                    <a href={`tel:${phone.replace(/\D/g, "")}`}>{phone}</a>
-                  </span>
-                )}
-                {fax && <span className="block">Fax: {fax}</span>}
-              </address>
-              <ul className="hidden gap-3 md:flex">
-                {social.map((s) => (
-                  <li key={s.service}>
-                    <SocialIcon service={s.service} url={s.url} />
+              <div className="space-y-6 text-center md:text-left">
+                <div className="space-y-[10px]">
+                  <div className="">{organization}</div>
+                  <div className="inline-block divide-y">
+                    {addresses.map((add, i) => (
+                      <address key={i} className="py-1 not-italic">
+                        {add.street}
+                        <br />
+                        {add.city} {add.state}, {add.zip}
+                      </address>
+                    ))}
+                  </div>
+                </div>
+                <address className="not-italic">
+                  {phone && (
+                    <span className="block">
+                      Telephone:{" "}
+                      <a href={`tel:${phone.replace(/\D/g, "")}`}>{phone}</a>
+                    </span>
+                  )}
+                  {fax && <span className="block">Fax: {fax}</span>}
+                </address>
+                <ul className="hidden gap-3 md:flex">
+                  {social.map((s) => (
+                    <li key={s.service}>
+                      <SocialIcon service={s.service} url={s.url} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div>
+              <ul className="columns-1 space-y-5 md:columns-2 lg:columns-3">
+                {siteMap.map((item, i) => (
+                  <li key={i} className="text-center">
+                    <Link href={item.href}>{item.name}</Link>
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
-          <div>
-            <ul className="columns-1 space-y-5 md:columns-2 lg:columns-3">
-              {siteMap.map((item, i) => (
-                <li key={i} className="text-center">
-                  <Link href={item.href}>{item.name}</Link>
+            <ul className="mt-4 flex justify-center gap-3 md:hidden">
+              {social.map((s) => (
+                <li key={s.service}>
+                  <SocialIcon service={s.service} url={s.url} />
                 </li>
               ))}
             </ul>
           </div>
-          <ul className="mt-4 flex justify-center gap-3 md:hidden">
-            {social.map((s) => (
-              <li key={s.service}>
-                <SocialIcon service={s.service} url={s.url} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </footer>
   );
 }
