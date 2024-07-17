@@ -51,9 +51,9 @@ export default function ImageCard({
         )}
       >
         <ResponsiveImage
-          className="aspect-[8/5] w-full rounded-t-lg"
+          className="aspect-[8/5] w-full rounded-t-lg object-cover"
           image={image}
-          sizes={"100vw"}
+          sizes={"33vw"}
         />
         <div className="flex h-full flex-col justify-between p-10">
           <div>

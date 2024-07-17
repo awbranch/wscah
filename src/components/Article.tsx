@@ -70,9 +70,8 @@ export default function Article({ blockPalette, text, columns }: ArticleProps) {
               return (
                 <figure className={"my-12 w-full"}>
                   <ResponsiveImage
-                    className="w-full rounded-xl"
+                    className="w-full rounded-xl object-cover"
                     image={value}
-                    sizes={"100vw"}
                   />
                   {value.caption && (
                     <figcaption

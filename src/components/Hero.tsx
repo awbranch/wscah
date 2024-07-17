@@ -69,7 +69,7 @@ export default function Hero({
               priority={false}
               sizes={`(max-width: ${breakpoints.lg}px) 32rem, 50vw`}
               className={clsx(
-                "absolute top-[15px] aspect-[5/8] w-[60%] rounded-2xl",
+                "absolute top-[15px] aspect-[5/8] w-[60%] rounded-2xl object-cover",
                 {
                   "left-[7%] rotate-[-10deg]": idx === 0,
                   "left-[17%] rotate-[-5deg]": idx === 1,

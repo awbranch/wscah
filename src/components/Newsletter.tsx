@@ -13,14 +13,10 @@ export default function Newsletter({
 }: NewsletterType) {
   return (
     <div className="space-y-8 text-center">
-      <div className="mx-auto max-w-[700px] space-y-8">
+      <div className="mx-auto max-w-[650px] space-y-8">
         <div className="space-y-3">
           {eyebrow && (
-            <div
-              className={clsx(
-                "text-sm font-black uppercase text-grape-300 md:text-base",
-              )}
-            >
+            <div className={clsx("text-sm font-black uppercase md:text-base")}>
               {eyebrow}
             </div>
           )}

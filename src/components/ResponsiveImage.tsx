@@ -1,11 +1,10 @@
 import React, { ImgHTMLAttributes } from "react";
 import { imageAttributes, urlFor } from "@/utils/sanity";
 import { Image } from "@/types/Image";
-import { twMerge } from "tailwind-merge";
 
 type ResponsiveImageProps = ImgHTMLAttributes<HTMLImageElement> & {
   image: Image;
-  sizes: string;
+  sizes?: string;
   priority?: boolean;
   className?: string;
 };
@@ -14,9 +13,9 @@ const responsiveWidths = [700, 990, 1280, 1570, 1860];
 
 export default function ResponsiveImage({
   image,
-  sizes,
+  sizes = '100vw',
   priority = false,
-  className,
+  className = "w-full object-cover",
 }: ResponsiveImageProps) {
   if (!image?.asset) {
     return <></>;
@@ -55,7 +54,7 @@ export default function ResponsiveImage({
       width={width}
       height={height}
       decoding={"async"}
-      className={twMerge("w-full object-cover", className)}
+      className={className}
       sizes={sizes}
       srcSet={srcSet}
       src={src}

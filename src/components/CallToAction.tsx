@@ -32,7 +32,7 @@ export default function CallToAction({
           image={image}
           priority={false}
           sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
-          className={"h-full rounded-xl"}
+          className={"w-full object-cover rounded-xl"}
         />
       </div>
       <div className="relative py-12 md:py-24 lg:py-32">
