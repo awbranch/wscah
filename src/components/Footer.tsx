@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import Newsletter from "@/components/Newsletter";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import SocialIcon from "@/components/SocialIcon";
+import Link from "next/link";
 
 export default async function Footer() {
   const {
@@ -32,7 +33,7 @@ export default async function Footer() {
           }}
         >
           <Container>
-            <div className="py-[95px]">
+            <div className="py-10 md:py-[95px]">
               <Newsletter
                 eyebrow={newsletter.eyebrow}
                 title={newsletter.title}
@@ -59,11 +60,11 @@ export default async function Footer() {
 
       <Container>
         <div className="grid grid-cols-1 gap-6 pb-20 pt-10 md:grid-cols-2">
-          <div className="flex gap-6">
+          <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
             <div className="flex-none">
               <img className="flex-none" src="/logo-light.svg" width="52" />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-6 text-center md:text-left">
               <div className="space-y-[10px]">
                 <div className="">{organization}</div>
                 <div className="inline-block divide-y">
@@ -85,7 +86,7 @@ export default async function Footer() {
                 )}
                 {fax && <span className="block">Fax: {fax}</span>}
               </address>
-              <ul className="flex gap-3">
+              <ul className="hidden gap-3 md:flex">
                 {social.map((s) => (
                   <li key={s.service}>
                     <SocialIcon service={s.service} url={s.url} />
@@ -94,7 +95,22 @@ export default async function Footer() {
               </ul>
             </div>
           </div>
-          <div>Right Side</div>
+          <div>
+            <ul className="columns-1 space-y-5 md:columns-2 lg:columns-3">
+              {siteMap.map((item, i) => (
+                <li key={i} className="text-center">
+                  <Link href={item.href}>{item.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <ul className="mt-4 flex justify-center gap-3 md:hidden">
+            {social.map((s) => (
+              <li key={s.service}>
+                <SocialIcon service={s.service} url={s.url} />
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
     </footer>

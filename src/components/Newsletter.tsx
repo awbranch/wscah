@@ -25,7 +25,9 @@ export default function Newsletter({
               {title}
             </h1>
           )}
-          {text && <SimpleText text={text} />}
+          <div className="hidden md:block">
+            {text && <SimpleText text={text} />}
+          </div>
         </div>
       </div>
       {label && href && (
