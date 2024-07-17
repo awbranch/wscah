@@ -7,5 +7,5 @@ export type SocialMediaService =
 
 export type Social = {
   service: SocialMediaService;
-  href: string;
+  url: string;
 };
