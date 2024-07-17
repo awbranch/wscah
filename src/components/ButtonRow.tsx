@@ -12,7 +12,7 @@ export default async function ButtonRow({
   return (
     <div
       className={twJoin(
-        "flex flex-col gap-8 xs:flex-row",
+        "my-4 flex flex-col gap-6 xs:flex-row",
         alignment === "left" && "justify-start",
         alignment === "center" && "justify-center",
         alignment === "right" && "justify-end",

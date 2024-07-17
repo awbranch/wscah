@@ -6,6 +6,7 @@ import { CaptionedImage } from "@/types/CaptionedImage";
 import ButtonRow from "@/components/ButtonRow";
 import { ButtonRow as ButtonRowType } from "@/types/ButtonRow";
 import { userHeaderClasses } from "@/utils/globals";
+import clsx from "clsx";
 import {
   BlockQuote,
   Em,
@@ -27,7 +28,13 @@ type ArticleProps = Omit<ArticleType, "_type" | "_key">;
 export default function Article({ blockPalette, text, columns }: ArticleProps) {
   const palette = blockPalette || "white";
   return (
-    <div className={"margins-y-0"}>
+    <div
+      className={clsx("margins-y-0", {
+        "columns-1 md:columns-2": columns === 2,
+        "columns-1 md:columns-2 lg:columns-3": columns === 3,
+        "columns-1 md:columns-2 lg:columns-3 xl:columns-4": columns === 4,
+      })}
+    >
       <PortableText
         value={text}
         components={{
