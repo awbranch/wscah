@@ -17,6 +17,7 @@ export default async function Footer() {
     fax,
     social,
     siteMap,
+    legal,
   } = await getFooter();
 
   const pages = await getPages();
@@ -123,6 +124,15 @@ export default async function Footer() {
           </div>
         </Container>
       </div>
+      {legal && (
+        <div className="bg-grape-700">
+          <Container>
+            <div className="flex min-h-[60px] items-center justify-center gap-x-3 px-6 py-3 text-center text-sm text-white sm:px-3.5">
+              {legal}
+            </div>
+          </Container>
+        </div>
+      )}
     </footer>
   );
 }

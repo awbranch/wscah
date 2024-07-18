@@ -15,4 +15,5 @@ export type Footer = {
   fax?: string;
   social: Social[];
   siteMap: Link[];
+  legal?: string;
 };
