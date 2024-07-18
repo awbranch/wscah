@@ -7,13 +7,13 @@ import { breakpoints } from "@/utils/globals";
 import clsx from "clsx";
 import { PortableText } from "@portabletext/react";
 import { Link, Small } from "@/components/Typography";
+import SimpleText from "@/components/SimpleText";
 
 type HeroProps = Omit<HeroType, "_type" | "_key"> & {
   componentsBelow?: boolean;
 };
 
 export default function Hero({
-  blockId,
   blockPalette,
   title,
   subtitle,
@@ -30,6 +30,7 @@ export default function Hero({
         // Make extra room for the wallpaper
         "min-h-[940px] xs:min-h-[1000px] md:min-h-[1100px] lg:min-h-[750px]":
           wallpaper && componentsBelow,
+        "mb-[120px]": wallpaper && !componentsBelow,
       })}
     >
       <div
@@ -44,7 +45,11 @@ export default function Hero({
             alignment="center"
             textSize="xl"
           />
-          <div className="text-center text-lg">{subtitle}</div>
+          {subtitle && (
+            <div className="text-center text-lg">
+              <SimpleText text={subtitle} />
+            </div>
+          )}
 
           {button && button.length && (
             <LinkButton
@@ -71,26 +76,45 @@ export default function Hero({
             />
           )}
         </div>
-        <div className="mt-10 flex items-center justify-center lg:mt-0">
-          <div className={"relative aspect-square h-auto w-full max-w-[580px]"}>
-            {images.map((image, idx) => (
+        <div className="flex items-center justify-center lg:mt-0">
+          {display === "fan" && images.length === 4 && (
+            <div
+              className={
+                "relative mt-10 aspect-square h-auto w-full max-w-[580px]"
+              }
+            >
+              {images.map((image, idx) => (
+                <ResponsiveImage
+                  key={idx}
+                  image={image.image}
+                  priority={false}
+                  sizes={`(max-width: ${breakpoints.lg}px) 32rem, 50vw`}
+                  className={clsx(
+                    "absolute top-[15px] aspect-[5/8] w-[60%] rounded-2xl object-cover",
+                    {
+                      "left-[7%] rotate-[-10deg]": idx === 0,
+                      "left-[17%] rotate-[-5deg]": idx === 1,
+                      "left-[27%]": idx === 2,
+                      "left-[37%] rotate-[5deg]": idx === 3,
+                    },
+                  )}
+                />
+              ))}
+            </div>
+          )}
+
+          {display === "single" && images.length === 1 && (
+            <div className="ml-10 mt-6 lg:mt-0">
               <ResponsiveImage
-                key={idx}
-                image={image.image}
+                image={images[0].image}
                 priority={false}
-                sizes={`(max-width: ${breakpoints.lg}px) 32rem, 50vw`}
-                className={clsx(
-                  "absolute top-[15px] aspect-[5/8] w-[60%] rounded-2xl object-cover",
-                  {
-                    "left-[7%] rotate-[-10deg]": idx === 0,
-                    "left-[17%] rotate-[-5deg]": idx === 1,
-                    "left-[27%]": idx === 2,
-                    "left-[37%] rotate-[5deg]": idx === 3,
-                  },
-                )}
+                sizes={`50vw`}
+                className={
+                  "aspect-[4/3] h-[400px] w-full rounded-xl object-cover"
+                }
               />
-            ))}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

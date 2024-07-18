@@ -8,7 +8,7 @@ export type Hero = ComponentProps & {
   title: PortableTextBlock[];
   subtitle?: string;
   text?: PortableTextBlock[];
-  display: "fan" | "single-image";
+  display: "fan" | "single";
   images: ImageRef[];
   button: Button[];
   wallpaper?: boolean;
