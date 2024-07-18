@@ -1,14 +1,12 @@
-import {
-  getPageByPath,
-  getPages,
-  getSettings,
-  urlFor,
-} from "@/utils/sanity";
+import { getPageByPath, getPages, getSettings, urlFor } from "@/utils/sanity";
 import React from "react";
 import Section from "@/components/Section";
 import ComponentList from "@/components/ComponentList";
+import { Component } from "@/types/Component";
 import type { Metadata } from "next";
 import { socialMediaImageDimensions } from "@/utils/globals";
+import { Hero } from "@/types/Hero";
+
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -72,16 +70,29 @@ export default async function GenericPage({ params }: Props) {
       )} */}
       {page?.blocks
         ?.filter((b) => !b.hidden)
-        ?.map((b) => (
+        ?.map((b, i) => (
           <Section
             key={b._key}
             id={b.id}
             palette={b.palette}
             maxWidth={page.maxWidth}
+            wallpaper={getSectionWallpaper(b.components)}
           >
             {b?.components && <ComponentList components={b.components} />}
           </Section>
         ))}
     </>
   );
+}
+
+function getSectionWallpaper(components?: Component[]) {
+  if (components) {
+    const index = components.findIndex((c) => c._type === "hero");
+    if (index !== -1) {
+      let hero = components[index] as Hero;
+      if (hero.wallpaper) {
+        return index < components.length - 1 ? "below-hero" : "bottom";
+      }
+    }
+  }
 }

@@ -5,6 +5,7 @@ import Newsletter from "@/components/Newsletter";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import SocialIcon from "@/components/SocialIcon";
 import Link from "next/link";
+import clsx from "clsx";
 
 export default async function Footer() {
   const {
@@ -59,13 +60,12 @@ export default async function Footer() {
       )}
 
       <div
-        className="pb-[150px]"
-        style={{
-          backgroundImage: `url('/confetti.svg')`,
-          backgroundSize: "1440px 600px",
-          backgroundPosition: "bottom -150px center",
-          backgroundRepeat: "no-repeat",
-        }}
+        className={clsx([
+          "pb-6 md:pb-[150px]",
+          "bg-[url('/confetti.svg')] bg-no-repeat",
+          "bg-[length:1296px_540px] md:bg-[length:1440px_600px]",
+          "bg-[bottom_-120px_center] md:bg-[bottom_-140px_center]",
+        ])}
       >
         <Container>
           <div className="grid grid-cols-1 gap-6 pb-20 pt-10 md:grid-cols-2">

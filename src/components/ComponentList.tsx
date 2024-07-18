@@ -17,8 +17,8 @@ type ComponentListProps = {
 export default function ComponentList({ components }: ComponentListProps) {
   return (
     <div className={"space-y-12"}>
-      {components.map((c) => (
-        <Component key={c._key} component={c} />
+      {components.map((c, i) => (
+        <Component key={c._key} component={c} index={i} components={components}/>
       ))}
     </div>
   );
@@ -26,9 +26,11 @@ export default function ComponentList({ components }: ComponentListProps) {
 
 type ComponentProps = {
   component: ComponentType;
+  components: ComponentType[];
+  index: number;
 };
 
-function Component({ component }: ComponentProps) {
+function Component({ component, index, components }: ComponentProps) {
   switch (component._type) {
     case "announcement":
       return <Announcement {...component} />;
@@ -43,7 +45,7 @@ function Component({ component }: ComponentProps) {
       return <ButtonRow {...component} />;
 
     case "hero":
-      return <Hero {...component} />;
+      return <Hero {...component} componentsBelow={index < components.length - 1} />;
 
     case "iframe":
       return <IFrame {...component} />;

@@ -11,4 +11,5 @@ export type Hero = ComponentProps & {
   display: "fan" | "single-image";
   images: ImageRef[];
   button: Button[];
+  wallpaper?: boolean;
 };
