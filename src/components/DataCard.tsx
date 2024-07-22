@@ -19,7 +19,7 @@ export default function DataCard({
   return (
     <div
       className={clsx(
-        "flex h-full flex-col justify-between rounded-lg px-6 py-10",
+        "flex h-full flex-col justify-between space-y-4 rounded-lg px-6 py-10",
         {
           "bg-grape-500": palette === "blue",
           "bg-white": palette === "white",
@@ -64,7 +64,12 @@ export default function DataCard({
           )}
         </div>
       </div>
-      <DataChart palette={palette} units={units} data={data} />
+      <DataChart
+        palette={palette}
+        units={units}
+        data={data}
+        label={title || "Data Chart"}
+      />
     </div>
   );
 }
