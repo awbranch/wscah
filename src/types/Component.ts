@@ -3,6 +3,7 @@ import { Announcement } from "@/types/Announcement";
 import { Article } from "@/types/Article";
 import { ButtonRow } from "@/types/ButtonRow";
 import { CallToAction } from "@/types/CallToAction";
+import { ComponentSetReference } from '@/types/ComponentSetReference';
 import { ContactForm } from "@/types/ContactForm";
 import { FlexBox } from "@/types/FlexBox";
 import { Hero } from "@/types/Hero";
@@ -24,6 +25,7 @@ export type Component =
   | Article
   | ButtonRow
   | CallToAction
+  | ComponentSetReference
   | ContactForm
   | FlexBox
   | Hero

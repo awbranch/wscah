@@ -6,6 +6,7 @@ import { Footer } from "@/types/Footer";
 import { Header } from "@/types/Header";
 import { Settings } from "@/types/Settings";
 import { NewsStory } from "@/types/NewsStory";
+import { ComponentSet } from "@/types/ComponentSet";
 
 const client = createClient({
   projectId: "n427st2j",
@@ -142,6 +143,30 @@ export async function getLatestNews(count: number) {
     fetchOptions()
   );
 }
+
+export async function getComponentSets() {
+  return client.fetch<ComponentSet[]>(
+    groq`*[_type == "componentSet"]`,
+    {},
+    fetchOptions(),
+  );
+}
+
+export async function getComponentSet(id: string) {
+  if (process.env.NODE_ENV === 'development') {
+    return client.fetch<ComponentSet>(
+      groq`*[_id == $id][0]`,
+      {
+        id,
+      },
+      fetchOptions(),
+    );
+  } else {
+    let s = await getComponentSets();
+    return s.find((c) => c._id === id);
+  }
+}
+
 
 function fetchOptions() {
   if (process.env.NODE_ENV === "development") {

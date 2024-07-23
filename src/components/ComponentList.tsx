@@ -9,6 +9,7 @@ import IFrame from "@/components/IFrame";
 import LatestNews from "@/components/LatestNews";
 import MediaCardSet from "@/components/MediaCardSet";
 import Title from "@/components/Title";
+import ComponentSetReference from "@/components/ComponentSetReference";
 
 type ComponentListProps = {
   components: ComponentType[];
@@ -18,7 +19,12 @@ export default function ComponentList({ components }: ComponentListProps) {
   return (
     <div className={"space-y-12"}>
       {components.map((c, i) => (
-        <Component key={c._key} component={c} index={i} components={components}/>
+        <Component
+          key={c._key}
+          component={c}
+          index={i}
+          components={components}
+        />
       ))}
     </div>
   );
@@ -45,7 +51,9 @@ function Component({ component, index, components }: ComponentProps) {
       return <ButtonRow {...component} />;
 
     case "hero":
-      return <Hero {...component} componentsBelow={index < components.length - 1} />;
+      return (
+        <Hero {...component} componentsBelow={index < components.length - 1} />
+      );
 
     case "iframe":
       return <IFrame {...component} />;
@@ -58,6 +66,9 @@ function Component({ component, index, components }: ComponentProps) {
 
     case "title":
       return <Title {...component} />;
+
+    case "componentSetReference":
+      return <ComponentSetReference {...component} />;
 
     default:
       return (
