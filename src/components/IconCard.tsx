@@ -59,7 +59,7 @@ export default function IconCard({
               {title}
             </H2>
           )}
-          {title && text && (
+          {((title && text) || text) && (
             <hr
               className={clsx(
                 "mx-auto w-[26px] border-[3.5px] transition-all group-hover:w-[116px]",
