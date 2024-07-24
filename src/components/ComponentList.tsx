@@ -4,12 +4,12 @@ import Announcement from "@/components/Announcement";
 import Article from "@/components/Article";
 import ButtonRow from "@/components/ButtonRow";
 import CallToAction from "@/components/CallToAction";
+import ComponentSetReference from "@/components/ComponentSetReference";
+import EmbeddedHtml from "@/components/EmbeddedHtml";
 import Hero from "@/components/Hero";
-import IFrame from "@/components/IFrame";
 import LatestNews from "@/components/LatestNews";
 import MediaCardSet from "@/components/MediaCardSet";
 import Title from "@/components/Title";
-import ComponentSetReference from "@/components/ComponentSetReference";
 
 type ComponentListProps = {
   components: ComponentType[];
@@ -55,8 +55,8 @@ function Component({ component, index, components }: ComponentProps) {
         <Hero {...component} componentsBelow={index < components.length - 1} />
       );
 
-    case "iframe":
-      return <IFrame {...component} />;
+    case "embeddedHtml":
+      return <EmbeddedHtml {...component} />;
 
     case "latestNews":
       return <LatestNews {...component} />;
