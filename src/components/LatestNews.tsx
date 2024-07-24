@@ -1,18 +1,22 @@
 import React from "react";
-import { LatestNews as Props } from "@/types/LatestNews";
+import { LatestNews as LatestNewsType } from "@/types/LatestNews";
 import { getLatestNews } from "@/utils/sanity";
-import LatestNewsClient from "@/components/LatestNewsClient";
+import NewsSummaryGrid from "@/components/NewsSummaryGrid";
+
+type LatestNewsProps = Omit<LatestNewsType, "_type" | "_key"> & {
+  componentsBelow?: boolean;
+};
 
 export default async function LatestNews({
   blockId,
   blockPalette,
   count,
-}: Props) {
+}: LatestNewsProps) {
   // Fetch the latest news
   const stories = await getLatestNews(count);
 
   return (
-    <LatestNewsClient
+    <NewsSummaryGrid
       blockId={blockId}
       blockPalette={blockPalette}
       stories={stories.map((s) => ({

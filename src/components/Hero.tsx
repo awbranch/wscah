@@ -80,7 +80,7 @@ export default function Hero({
           {display === "fan" && images.length === 4 && (
             <div
               className={
-                "relative mt-10 aspect-square h-auto w-full max-w-[580px]"
+                "relative mt-10 aspect-square h-auto w-full max-w-[580px] lg:mt-5"
               }
             >
               {images.map((image, idx) => (
@@ -90,7 +90,7 @@ export default function Hero({
                   priority={false}
                   sizes={`(max-width: ${breakpoints.lg}px) 32rem, 50vw`}
                   className={clsx(
-                    "absolute top-[15px] aspect-[5/8] w-[60%] rounded-2xl object-cover",
+                    "absolute top-0 aspect-[5/8] w-[60%] rounded-2xl object-cover",
                     {
                       "left-[7%] rotate-[-10deg]": idx === 0,
                       "left-[17%] rotate-[-5deg]": idx === 1,
@@ -104,7 +104,7 @@ export default function Hero({
           )}
 
           {display === "single" && images.length === 1 && (
-            <div className="ml-10 mt-6 lg:mt-0">
+            <div className="mt-6 lg:mt-0">
               <ResponsiveImage
                 image={images[0].image}
                 priority={false}

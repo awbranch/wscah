@@ -110,6 +110,14 @@ function addBlockConfig(page?: Page) {
   }
 }
 
+export async function getNewsStories() {
+  return client.fetch<NewsStory[]>(
+    groq`*[_type == "newsStory" && hidden != true]{..., categories[]->{label, value}} | order(date desc)`,
+    {},
+    fetchOptions(),
+  );
+}
+
 export async function getSettings() {
   return client.fetch<Settings>(
     groq`*[_type == "settings"][0]`,

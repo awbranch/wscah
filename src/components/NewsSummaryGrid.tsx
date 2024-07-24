@@ -17,17 +17,17 @@ type StorySummary = {
   categories: NewsCategory[];
 };
 
-type Props = {
+type NewsSummaryGridProps = {
   blockId?: string;
   blockPalette?: Palette;
   stories: StorySummary[];
 };
 
-export default function LatestNewsClient({
+export default function NewsSummaryGrid({
   blockId,
   blockPalette,
   stories,
-}: Props) {
+}: NewsSummaryGridProps) {
   const [now, setNow] = useState<Date>();
 
   useEffect(() => {
