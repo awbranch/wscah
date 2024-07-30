@@ -12,5 +12,5 @@ export type CallToAction = ComponentProps & {
   eyebrow?: string;
   title?: PortableTextBlock[];
   text?: string;
-  button?: Button[];
+  buttons: Button[];
 };

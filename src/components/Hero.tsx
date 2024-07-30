@@ -20,7 +20,7 @@ export default function Hero({
   text,
   display,
   images,
-  button,
+  buttons,
   wallpaper = false,
   componentsBelow = false,
 }: HeroProps) {
@@ -51,14 +51,19 @@ export default function Hero({
             </div>
           )}
 
-          {button && button.length && (
-            <LinkButton
-              href={button[0].href}
-              variant={button[0].variant}
-              icon={button[0].icon}
-            >
-              {button[0].label}
-            </LinkButton>
+          {buttons && buttons.length && (
+            <div className="flex w-full flex-col gap-6 xs:w-fit xs:flex-row">
+              {buttons.map((b) => (
+                <LinkButton
+                  key={b._key}
+                  href={b.href}
+                  variant={b.variant}
+                  icon={b.icon}
+                >
+                  {b.label}
+                </LinkButton>
+              ))}
+            </div>
           )}
           {text && (
             <PortableText

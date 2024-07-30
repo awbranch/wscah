@@ -18,7 +18,7 @@ export default function CallToAction({
   eyebrow,
   title,
   text,
-  button,
+  buttons,
 }: CallToActionProps) {
   return (
     <div className="relative">
@@ -32,7 +32,7 @@ export default function CallToAction({
           image={image}
           priority={false}
           sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
-          className={"w-full object-cover rounded-xl"}
+          className={"w-full rounded-xl object-cover"}
         />
       </div>
       <div className="relative py-12 md:py-24 lg:py-32">
@@ -63,14 +63,19 @@ export default function CallToAction({
               text={text}
             />
           )}
-          {button && button[0] && (
-            <LinkButton
-              variant={button[0].variant}
-              href={button[0].href}
-              icon={button[0].icon}
-            >
-              {button[0].label}
-            </LinkButton>
+          {buttons && buttons.length && (
+            <div className="flex flex-col justify-center gap-6 xs:flex-row">
+              {buttons.map((b) => (
+                <LinkButton
+                  key={b._key}
+                  href={b.href}
+                  variant={b.variant}
+                  icon={b.icon}
+                >
+                  {b.label}
+                </LinkButton>
+              ))}
+            </div>
           )}
         </div>
       </div>
