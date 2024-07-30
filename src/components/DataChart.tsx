@@ -65,7 +65,7 @@ function LineChart({
   const margin = { top: 5, right: 5, bottom: 5, left: 5 };
   const chartWidth = width - margin.left - margin.right;
   const chartHeight = height - margin.top - margin.bottom;
- 
+
   const years = data.map((p) => p.year);
   const values = data.map((p) => p.value);
 
@@ -90,7 +90,7 @@ function LineChart({
         <path
           className={clsx("fill-none", {
             "stroke-white": palette === "blue",
-            "stroke-black": palette === "white" || palette === "gray",
+            "stroke-grape-500": palette === "white" || palette === "gray",
           })}
           style={{
             strokeWidth: 4,
@@ -100,7 +100,7 @@ function LineChart({
         <g
           className={clsx("stroke-none", {
             "fill-white": palette === "blue",
-            "fill-black": palette === "white" || palette === "gray",
+            "fill-grape-500": palette === "white" || palette === "gray",
           })}
         >
           {data.map((p) => (

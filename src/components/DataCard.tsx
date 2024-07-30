@@ -4,6 +4,7 @@ import { H2, Para } from "@/components/Typography";
 import DataChart from "@/components/DataChart";
 import { Palette } from "@/types/Palette";
 import clsx from "clsx";
+import { userHeaderClasses } from "@/utils/globals";
 
 type DataCardProps = Omit<DataCardType, "_type" | "_key"> & {
   palette: Palette;
@@ -30,12 +31,7 @@ export default function DataCard({
       <div className="h-full">
         <div className="flex flex-col gap-4">
           {title && (
-            <H2
-              className={clsx("my-0", {
-                "text-grape-600": palette === "white" || palette === "gray",
-                "text-white": palette === "blue",
-              })}
-            >
+            <H2 className={clsx("my-0", userHeaderClasses[palette])}>
               {title}
             </H2>
           )}

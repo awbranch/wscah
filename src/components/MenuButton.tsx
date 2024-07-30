@@ -17,8 +17,8 @@ const variantClasses: { [V in Variant]: string } = {
 const paletteClasses: { [V in Variant]: { [P in Palette]: string } } = {
   text: {
     white:
-      "text-black ui-open:bg-grape-700 ui-open:text-white hover:text-white hover:bg-grape-700",
-    gray: "text-black ui-open:bg-grape-700 ui-open:text-white hover:text-white hover:bg-grape-700",
+      "text-grape-600 ui-open:bg-grape-700 ui-open:text-white hover:text-white hover:bg-grape-700",
+    gray: "text-grape-600 ui-open:bg-grape-700 ui-open:text-white hover:text-white hover:bg-grape-700",
     blue: "text-white ui-open:bg-grape-700 hover:bg-grape-700",
   },
   button: {

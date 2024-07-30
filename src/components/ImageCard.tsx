@@ -9,6 +9,7 @@ import { PsuedoButton, LinkButton } from "@/components/Button";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import WithLink from "@/components/WithLink";
 import clsx from "clsx";
+import { userHeaderClasses } from "@/utils/globals";
 
 type ImageCardProps = Omit<ImageCardType, "_type" | "_key"> & {
   palette: Palette;
@@ -62,10 +63,10 @@ export default function ImageCard({
 
               {title && (
                 <H2
-                  className={clsx("my-0 text-[25px] md:text-2xl", {
-                    "text-grape-600": palette === "white" || palette === "gray",
-                    "text-white": palette === "blue",
-                  })}
+                  className={clsx(
+                    "my-0 text-[25px] md:text-2xl",
+                    userHeaderClasses[palette],
+                  )}
                 >
                   {title}
                 </H2>

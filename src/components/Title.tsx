@@ -38,16 +38,7 @@ export default function Title({
           />
         )}
       </div>
-      {text && (
-        <SimpleText
-          className={clsx({
-            "text-grape-600":
-              blockPalette === "white" || blockPalette === "gray",
-            "text-white": blockPalette === "blue",
-          })}
-          text={text}
-        />
-      )}
+      {text && <SimpleText text={text} />}
     </div>
   );
 }

@@ -40,10 +40,27 @@ export default function Article({ blockPalette, text, columns }: ArticleProps) {
         components={{
           marks: {
             link: ({ children, value }) => (
-              <Link href={value.href}>{children}</Link>
+              <Link href={value.href}>
+                {children}
+              </Link>
             ),
             em: ({ children }) => <Em>{children}</Em>,
             strong: ({ children }) => <Strong>{children}</Strong>,
+            "highlight-blue": ({ children }) => (
+              <span className="bg-grape-400 px-[1px] text-white">
+                {children}
+              </span>
+            ),
+            "highlight-orange": ({ children }) => (
+              <span className="bg-carrot-600 px-[1px] text-white">
+                {children}
+              </span>
+            ),
+            "highlight-green": ({ children }) => (
+              <span className="bg-kale-700 px-[1px] text-white">
+                {children}
+              </span>
+            ),
           },
           block: {
             h1: ({ children }) => (

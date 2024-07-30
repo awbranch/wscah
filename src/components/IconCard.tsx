@@ -8,6 +8,7 @@ import WithLink from "@/components/WithLink";
 import { Palette } from "@/types/Palette";
 import { ClickArea, ButtonVariant } from "@/types/MediaCardSet";
 import clsx from "clsx";
+import { userHeaderClasses } from "@/utils/globals";
 
 type IconCardProps = Omit<IconCardType, "_type" | "_key"> & {
   palette: Palette;
@@ -50,12 +51,7 @@ export default function IconCard({
         <div className="flex flex-col items-center gap-4 text-center">
           <SvgImage image={icon} />
           {title && (
-            <H2
-              className={clsx("my-0", {
-                "text-grape-600": palette === "white" || palette === "gray",
-                "text-white": palette === "blue",
-              })}
-            >
+            <H2 className={clsx("my-0", userHeaderClasses[palette])}>
               {title}
             </H2>
           )}

@@ -54,14 +54,7 @@ export default function CallToAction({
             />
           )}
           {text && (
-            <SimpleText
-              className={clsx("[text-wrap:balance]", {
-                "text-grape-600":
-                  blockPalette === "white" || blockPalette === "gray",
-                "text-white": blockPalette === "blue",
-              })}
-              text={text}
-            />
+            <SimpleText className={clsx("[text-wrap:balance]")} text={text} />
           )}
           {buttons && buttons.length && (
             <div className="flex flex-col justify-center gap-6 xs:flex-row">

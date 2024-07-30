@@ -78,10 +78,10 @@ export const userPaletteButtonProps: {
 
 export const userPaletteClasses: PaletteClass = {
   white: {
-    block: "bg-white text-black",
+    block: "bg-white text-grape-600",
   },
   gray: {
-    block: "bg-gray-100 text-black",
+    block: "bg-gray-100 text-grape-600",
   },
   blue: {
     block: "bg-grape-500 text-white",
