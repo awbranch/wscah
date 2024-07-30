@@ -110,7 +110,7 @@ export default function Hero({
                 priority={false}
                 sizes={`50vw`}
                 className={
-                  "aspect-[4/3] h-[400px] w-full rounded-xl object-cover"
+                  "aspect-square h-[540px] w-full rounded-xl object-cover"
                 }
               />
             </div>

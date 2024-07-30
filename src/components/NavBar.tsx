@@ -58,7 +58,7 @@ export default function NavBar({ menus, pagePalette, alert }: NavBarProps) {
             <span className="sr-only">WSCAH</span>
             <img
               alt="WSCAH"
-              className="inline-block h-[78px] w-auto"
+              className="inline-block h-[72px] w-auto"
               src={
                 palette === "blue"
                   ? "/logo-full-light.svg"
@@ -126,7 +126,7 @@ export default function NavBar({ menus, pagePalette, alert }: NavBarProps) {
                 </span>
               ))}
             </PopoverGroup>
-            <div className="flex xl:hidden">
+            <div className="ml-4 flex xl:hidden">
               <HamburgerButton
                 palette={palette}
                 onClick={() => setMobileMenuOpen(true)}
@@ -149,7 +149,7 @@ export default function NavBar({ menus, pagePalette, alert }: NavBarProps) {
             <div className="flex justify-end">
               <button
                 type="button"
-                className="rounded-sm inline-flex items-center justify-center bg-grape-700 p-[10px] text-white hover:bg-white hover:text-grape-600"
+                className="inline-flex items-center justify-center rounded-sm bg-grape-700 p-[10px] text-white hover:bg-white hover:text-grape-600"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
