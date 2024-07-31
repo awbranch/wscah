@@ -21,56 +21,49 @@ export default function CallToAction({
   buttons,
 }: CallToActionProps) {
   return (
-    <div className="relative">
-      <div
-        className={twJoin(
-          "relative h-80 overflow-hidden md:absolute md:h-full md:w-1/2",
-          orientation === "left" ? "md:left-0" : "md:right-0",
-        )}
-      >
+    <div
+      className={clsx("flex flex-col-reverse items-center gap-6", {
+        "lg:flex-row": orientation === "left",
+        "lg:flex-row-reverse": orientation === "right",
+      })}
+    >
+      <div className={"flex-shrink-0 basis-2/5"}>
         <ResponsiveImage
           image={image}
           priority={false}
           sizes={`(max-width: ${breakpoints.md}px) 100vw, 50vw`}
-          className={"w-full rounded-xl object-cover"}
+          className={
+            "aspect-square w-[504px] rounded-xl object-cover lg:aspect-[8/7]"
+          }
         />
       </div>
-      <div className="relative py-12 md:py-24 lg:py-32">
-        <div
-          className={twJoin(
-            "space-y-4 pl-6 pr-6 text-center md:w-1/2",
-            orientation === "left"
-              ? "md:ml-auto md:pl-12 lg:pl-16 xl:pl-24"
-              : "md:mr-auto md:pr-12 lg:pr-16 xl:pr-24",
-          )}
-        >
-          {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
-          {title && (
-            <HighlightedTitle
-              balanceText={true}
-              textSize="lg"
-              blockPalette={blockPalette}
-              title={title}
-            />
-          )}
-          {text && (
-            <SimpleText className={clsx("[text-wrap:balance]")} text={text} />
-          )}
-          {buttons && buttons.length && (
-            <div className="flex flex-col justify-center gap-6 xs:flex-row">
-              {buttons.map((b) => (
-                <LinkButton
-                  key={b._key}
-                  href={b.href}
-                  variant={b.variant}
-                  icon={b.icon}
-                >
-                  {b.label}
-                </LinkButton>
-              ))}
-            </div>
-          )}
-        </div>
+      <div className={"mx-auto max-w-xl basis-3/5 space-y-4 text-center"}>
+        {eyebrow && <Eyebrow blockPalette={blockPalette} text={eyebrow} />}
+        {title && (
+          <HighlightedTitle
+            balanceText={false}
+            textSize="lg"
+            blockPalette={blockPalette}
+            title={title}
+          />
+        )}
+        {text && (
+          <SimpleText className={clsx("[text-wrap:balance]")} text={text} />
+        )}
+        {buttons && buttons.length && (
+          <div className="mx-auto flex w-fit flex-col justify-center gap-6 xs:flex-row">
+            {buttons.map((b) => (
+              <LinkButton
+                key={b._key}
+                href={b.href}
+                variant={b.variant}
+                icon={b.icon}
+              >
+                {b.label}
+              </LinkButton>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

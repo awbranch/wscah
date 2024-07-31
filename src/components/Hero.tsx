@@ -52,7 +52,7 @@ export default function Hero({
           )}
 
           {buttons && buttons.length && (
-            <div className="flex w-full flex-col gap-6 xs:w-fit xs:flex-row">
+            <div className="flex flex-col gap-6 xs:flex-row">
               {buttons.map((b) => (
                 <LinkButton
                   key={b._key}
