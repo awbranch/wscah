@@ -1,4 +1,5 @@
 import { Block } from "@/types/Block";
+import { PageHeader } from "@/types/PageHeader";
 export type PageWidth = "xs" | "sm" | "md" | "lg";
 
 export type Page = {
@@ -6,7 +7,9 @@ export type Page = {
   _id: string;
   path: string;
   title: string;
-  description: string;
+  showHeader: boolean;
+  header?: PageHeader;
   maxWidth?: PageWidth;
   blocks?: Block[];
+  metaDescription: string;
 };

@@ -1,10 +1,13 @@
 import { getPageByPath, getPages, getSettings, urlFor } from "@/utils/sanity";
 import React from "react";
+import Container from "@/components/Container";
 import Section from "@/components/Section";
+import PageHeader from "@/components/PageHeader";
 import ComponentList from "@/components/ComponentList";
 import { Component } from "@/types/Component";
 import type { Metadata } from "next";
 import { socialMediaImageDimensions } from "@/utils/globals";
+
 import { Hero } from "@/types/Hero";
 
 export const dynamicParams = false;
@@ -29,8 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (page.title) {
       meta.title = page.title + " | " + settings.title;
     }
-    if (page.description) {
-      meta.description = page.description;
+    if (page.metaDescription) {
+      meta.description = page.metaDescription;
     }
     if (page.path) {
       meta.alternates = {
@@ -63,11 +66,9 @@ export default async function GenericPage({ params }: Props) {
 
   return (
     <>
-      {/* {path.length > 1 && (
-        <Container maxWidth={'lg'}>
-          <BreadCrumbs routes={convertToRoutes(path)} />
-        </Container>
-      )} */}
+      {page?.showHeader && page.header && (
+        <PageHeader {...page.header} pagePath={page.path} />
+      )}
       {page?.blocks
         ?.filter((b) => !b.hidden)
         ?.map((b, i) => (

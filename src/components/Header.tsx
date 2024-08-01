@@ -8,7 +8,11 @@ export default async function Header() {
   const pages = await getPages();
 
   const pagePalette = pages.reduce<Record<string, Palette>>((acc, page) => {
-    acc[page.path] = page.blocks?.[0].palette || "white";
+    if(page.showHeader && page.header?.palette) { 
+      acc[page.path] = page.header.palette;
+    } else {
+      acc[page.path] = page.blocks?.[0].palette || "white";
+    }
     return acc;
   }, {});
 
