@@ -1,5 +1,5 @@
 import { toFullDate } from "@/utils/date";
-import { getNewsStories, getSettings, urlFor } from "@/utils/sanity";
+import { getNews, getSettings, urlFor } from "@/utils/sanity";
 import NewsSummaryGrid from "@/components/NewsSummaryGrid";
 import Section from "@/components/Section";
 import Container from "@/components/Container";
@@ -9,7 +9,7 @@ import { H1, H2, Small } from "@/components/Typography";
 import ComponentList from "@/components/ComponentList";
 import { Metadata } from "next";
 import Article from "@/components/Article";
-import { NewsStory } from "@/types/NewsStory";
+import { News } from "@/types/News";
 import { Palette } from "@/types/Palette";
 import { socialMediaImageDimensions } from "@/utils/globals";
 import { userHeaderClasses } from "@/utils/globals";
@@ -19,7 +19,7 @@ import clsx from "clsx";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const stories = await getNewsStories();
+  const stories = await getNews();
   return stories.map((s) => ({ slug: s.slug.current }));
 }
 
@@ -29,7 +29,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const settings = await getSettings();
-  const stories = await getNewsStories();
+  const stories = await getNews();
   const story = stories.find((s) => s.slug.current === params.slug);
   const path = `/news/story/${params.slug}`;
 
@@ -72,7 +72,7 @@ export default async function Page({ params }: Props) {
   // Its actually more efficient to get all the news stories since this is calculated
   // at build time and Next caches all query requests with the same parameters
   // Calling this would actually result in a separate API call to sanity
-  const stories = await getNewsStories();
+  const stories = await getNews();
   const story = stories.find((s) => s.slug.current === params.slug);
 
   if (!story) {
@@ -121,14 +121,14 @@ export default async function Page({ params }: Props) {
         </H1>
         <NewsSummaryGrid
           blockPalette={"gray"}
-          stories={topStories.map((s) => ({
+          summaries={topStories.map((s) => ({
             _id: s._id,
             date: s.date,
             title: s.title,
             slug: s.slug,
             summary: s.summary,
             image: s.previewImage,
-            categories: s.categories,
+            category: s.category,
           }))}
         />
       </Section>
@@ -136,9 +136,9 @@ export default async function Page({ params }: Props) {
   );
 }
 
-function addPalette(story: NewsStory, palette: Palette) {
-  if (story.blocks) {
-    story.blocks.forEach((b) => {
+function addPalette(news: News, palette: Palette) {
+  if (news.blocks) {
+    news.blocks.forEach((b) => {
       if (b.components) {
         b.components.forEach((c) => (c.blockPalette = b.palette));
       }

@@ -5,7 +5,7 @@ import { Page } from "@/types/Page";
 import { Footer } from "@/types/Footer";
 import { Header } from "@/types/Header";
 import { Settings } from "@/types/Settings";
-import { NewsStory } from "@/types/NewsStory";
+import { News } from "@/types/News";
 import { ComponentSet } from "@/types/ComponentSet";
 
 const client = createClient({
@@ -69,7 +69,7 @@ export async function getPages() {
   let pages = await client.fetch<Page[]>(
     groq`*[_type == "page"]`,
     {},
-    fetchOptions()
+    fetchOptions(),
   );
   pages.forEach((p) => addBlockConfig(p));
   return pages;
@@ -84,7 +84,7 @@ export async function getPageByPath(path: string | string[]) {
       {
         path: pagePath,
       },
-      fetchOptions()
+      fetchOptions(),
     );
     addBlockConfig(page);
     return page;
@@ -110,9 +110,9 @@ function addBlockConfig(page?: Page) {
   }
 }
 
-export async function getNewsStories() {
-  return client.fetch<NewsStory[]>(
-    groq`*[_type == "newsStory" && hidden != true]{..., categories[]->{label, value}} | order(date desc)`,
+export async function getNews() {
+  return client.fetch<News[]>(
+    groq`*[_type == "news" && hidden != true]{..., category->{label, value}} | order(date desc)`,
     {},
     fetchOptions(),
   );
@@ -122,7 +122,7 @@ export async function getSettings() {
   return client.fetch<Settings>(
     groq`*[_type == "settings"][0]`,
     {},
-    fetchOptions()
+    fetchOptions(),
   );
 }
 
@@ -130,7 +130,7 @@ export async function getHeader() {
   return client.fetch<Header>(
     groq`*[_type == "header"][0]`,
     {},
-    fetchOptions()
+    fetchOptions(),
   );
 }
 
@@ -138,17 +138,17 @@ export async function getFooter() {
   return client.fetch<Footer>(
     groq`*[_type == "footer"][0]`,
     {},
-    fetchOptions()
+    fetchOptions(),
   );
 }
 
 export async function getLatestNews(count: number) {
-  return client.fetch<NewsStory[]>(
-    groq`*[_type == "newsStory" && hidden != true]{..., categories[]->{label, value}} | order(date desc) [0...$count]`,
+  return client.fetch<News[]>(
+    groq`*[_type == "news" && hidden != true]{..., category->{label, value}} | order(date desc) [0...$count]`,
     {
-      count: count
+      count: count,
     },
-    fetchOptions()
+    fetchOptions(),
   );
 }
 
@@ -161,7 +161,7 @@ export async function getComponentSets() {
 }
 
 export async function getComponentSet(id: string) {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === "development") {
     return client.fetch<ComponentSet>(
       groq`*[_id == $id][0]`,
       {
@@ -174,7 +174,6 @@ export async function getComponentSet(id: string) {
     return s.find((c) => c._id === id);
   }
 }
-
 
 function fetchOptions() {
   if (process.env.NODE_ENV === "development") {

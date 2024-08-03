@@ -3,10 +3,10 @@ import { Image } from "@/types/Image";
 import { Block } from "@/types/Block"
 import { NewsCategory } from '@/types/NewsCategory';
 
-export type NewsStory = {
-  _type: "newsStory";
+export type News = {
+  _type: "news";
   _id: string;
-  categories: NewsCategory[];
+  category: NewsCategory;
   date: string;
   title: string;
   slug: Slug;

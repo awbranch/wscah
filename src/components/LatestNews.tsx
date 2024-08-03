@@ -19,14 +19,14 @@ export default async function LatestNews({
     <NewsSummaryGrid
       blockId={blockId}
       blockPalette={blockPalette}
-      stories={stories.map((s) => ({
+      summaries={stories.map((s) => ({
         _id: s._id,
         date: s.date,
         title: s.title,
         slug: s.slug,
         summary: s.summary,
         image: s.previewImage,
-        categories: s.categories,
+        category: s.category,
       }))}
     />
   );

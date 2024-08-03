@@ -7,26 +7,26 @@ import { Palette } from "@/types/Palette";
 import { NewsCategory } from "@/types/NewsCategory";
 import { getNow, toUTCDate } from "@/utils/date";
 
-type StorySummary = {
+type NewsSummary = {
   _id: string;
   date: string;
   title: string;
   slug: Slug;
   summary: string;
   image: Image;
-  categories: NewsCategory[];
+  category: NewsCategory;
 };
 
 type NewsSummaryGridProps = {
   blockId?: string;
   blockPalette?: Palette;
-  stories: StorySummary[];
+  summaries: NewsSummary[];
 };
 
 export default function NewsSummaryGrid({
   blockId,
   blockPalette,
-  stories,
+  summaries,
 }: NewsSummaryGridProps) {
   const [now, setNow] = useState<Date>();
 
@@ -40,7 +40,7 @@ export default function NewsSummaryGrid({
       blockPalette={blockPalette}
       palette="white"
       clickArea="card"
-      cards={stories.map((s) => ({
+      cards={summaries.map((s) => ({
         _key: s._id,
         _type: "imageCard" as const,
         image: s.image,
@@ -53,13 +53,10 @@ export default function NewsSummaryGrid({
   );
 }
 
-function getCategoryLabel(story: StorySummary, now?: Date) {
-  const category =
-    story.categories.length > 0 ? story.categories[0].label : "News";
-
+function getCategoryLabel(story: NewsSummary, now?: Date) {
   if (now && now < toUTCDate(story.date)) {
-    return "Upcoming " + category;
+    return "Upcoming " + story.category.label;
   }
 
-  return category;
+  return story?.category?.label || "News";
 }
