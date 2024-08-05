@@ -1,6 +1,8 @@
+import { TeamMember } from "@/types/TeamMember";
+
 export type Team = {
+  _id: string;
   _type: "team";
-  _key: string;
-  id: string;
-  label: string;
+  name: string;
+  members: TeamMember[];
 };

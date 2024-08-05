@@ -9,6 +9,8 @@ import EmbeddedHtml from "@/components/EmbeddedHtml";
 import Hero from "@/components/Hero";
 import LatestNews from "@/components/LatestNews";
 import MediaCardSet from "@/components/MediaCardSet";
+import TabBar from "@/components/TabBar";
+import TeamList from "@/components/TeamList";
 import Title from "@/components/Title";
 
 type ComponentListProps = {
@@ -64,8 +66,14 @@ function Component({ component, index, components }: ComponentProps) {
     case "mediaCardSet":
       return <MediaCardSet {...component} />;
 
+    case "tabBar":
+      return <TabBar {...component} />;
+
     case "title":
       return <Title {...component} />;
+
+    case "teamList":
+      return <TeamList {...component} />;
 
     case "componentSetReference":
       return <ComponentSetReference {...component} />;

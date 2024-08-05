@@ -7,6 +7,7 @@ import { Header } from "@/types/Header";
 import { Settings } from "@/types/Settings";
 import { News } from "@/types/News";
 import { ComponentSet } from "@/types/ComponentSet";
+import { Team } from "@/types/Team";
 
 const client = createClient({
   projectId: "n427st2j",
@@ -172,6 +173,25 @@ export async function getComponentSet(id: string) {
   } else {
     let s = await getComponentSets();
     return s.find((c) => c._id === id);
+  }
+}
+
+export async function getTeams() {
+  return client.fetch<Team[]>(groq`*[_type == "team"]`, {}, fetchOptions());
+}
+
+export async function getTeam(id: string) {
+  if (process.env.NODE_ENV === "development") {
+    return client.fetch<Team>(
+      groq`*[_id == $id][0]`,
+      {
+        id,
+      },
+      fetchOptions(),
+    );
+  } else {
+    let s = await getTeams();
+    return s.find((t) => t._id === id);
   }
 }
 

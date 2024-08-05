@@ -10,13 +10,13 @@ import { FlexBox } from "@/types/FlexBox";
 import { Hero } from "@/types/Hero";
 import { LatestNews } from "@/types/LatestNews";
 import { MediaCardSet } from "@/types/MediaCardSet";
-import { NewsTabs } from "@/types/NewsTabs";
 import { Palette } from "@/types/Palette";
 import { ProposedText } from "@/types/ProposedText";
 import { ReportSet } from "@/types/ReportSet";
-import { TeamTabs } from "@/types/TeamTabs";
+import { TabBar } from "@/types/TabBar";
 import { Timeline } from "@/types/Timeline";
 import { Title } from "@/types/Title";
+import { TeamList } from "@/types/TeamList";
 import { Video } from "@/types/Video";
 
 export type Component =
@@ -32,10 +32,10 @@ export type Component =
   | Hero
   | LatestNews
   | MediaCardSet
-  | NewsTabs
   | ProposedText
   | ReportSet
-  | TeamTabs
+  | TabBar
+  | TeamList
   | Timeline
   | Title
   | Video;

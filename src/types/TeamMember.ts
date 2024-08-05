@@ -1,12 +1,11 @@
 import { Image } from "@/types/Image";
-import { Team } from "@/types/Team";
 
 export type TeamMember = {
   _type: "teamMember";
-  _id: string;
-  image: Image;
+  _key: string;
   name: string;
-  title: string;
+  role: string;
+  email: string;
+  image: Image;
   bio: string;
-  teams: Team[]; // The teams the member is part of
 };

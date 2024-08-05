@@ -5,10 +5,7 @@ import { twJoin } from "tailwind-merge";
 
 type ButtonRowProps = Omit<ButtonRowType, "_type" | "_key">;
 
-export default async function ButtonRow({
-  alignment,
-  buttons,
-}: ButtonRowProps) {
+export default function ButtonRow({ alignment, buttons }: ButtonRowProps) {
   return (
     <div
       className={twJoin(
