@@ -82,7 +82,7 @@ export default async function Footer() {
                       <address key={i} className="py-1 not-italic">
                         {add.street}
                         <br />
-                        {add.city} {add.state}, {add.zip}
+                        {add.city}, {add.state} {add.zip}
                       </address>
                     ))}
                   </div>
