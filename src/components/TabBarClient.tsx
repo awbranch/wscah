@@ -8,7 +8,7 @@ import clsx from "clsx";
 type Tab = {
   id: string;
   name: string;
-  content: React.ReactNode;
+  content?: React.ReactNode;
 };
 
 type TabBarClientProps = {
@@ -86,7 +86,9 @@ export default function TabBar({ id, tabs, blockPalette }: TabBarClientProps) {
           </nav>
         </div>
       </div>
-      {selectedTab && <div className="mt-6">{selectedTab.content}</div>}
+      {selectedTab && selectedTab.content && (
+        <div className="mt-6">{selectedTab.content}</div>
+      )}
     </div>
   );
 }

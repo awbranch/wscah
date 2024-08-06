@@ -17,14 +17,15 @@ export default function TabBar({
       tabs={tabs.map((tab) => ({
         id: tab.id,
         name: tab.name,
-        content: (
+        content: tab.components ? (
+          // Passing rendered server components to the client
           <ComponentList
             components={tab.components.map((c) => ({
               ...c,
               blockPalette: blockPalette,
             }))}
           />
-        ),
+        ) : undefined,
       }))}
     />
   );
