@@ -20,7 +20,6 @@ export default async function TeamList({
 
   return (
     <>
-      <div>Team {team.name}</div>
       {
         <ul>
           {team.members.map((member) => (
